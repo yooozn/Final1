@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Characters/New/Orbis Animations/ghost/this one will work/spritesheet (1).png" type="Texture" id=1]
-[ext_resource path="res://Characters/Player/Sprite.gd" type="Script" id=2]
-[ext_resource path="res://Characters/clouds.png" type="Texture" id=4]
+[ext_resource path="res://Characters/Player/Sprite.gd" type="Script" id=1]
+[ext_resource path="res://Characters/New/Orbis Animations/ghost/this one will work/spritesheet (1).png" type="Texture" id=2]
+[ext_resource path="res://Levels/BG/Untitled_Artwork-1.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.0628, 61.5125 )
@@ -88,12 +88,12 @@ tracks/0/keys = {
 }
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 
 [node name="Player_sprite" type="Sprite" parent="."]
 position = Vector2( -6.66367, -29.0271 )
 scale = Vector2( 0.33434, 0.33434 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 vframes = 6
 hframes = 5
 frame = 26
@@ -128,9 +128,10 @@ anims/Walk = SubResource( 6 )
 layer = -3
 
 [node name="clouds" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 521.77, 458.391 )
+position = Vector2( 515.711, 300.482 )
+scale = Vector2( 0.468446, 0.468446 )
 z_index = -9
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 [connection signal="timeout" from="Dash" to="." method="_on_Dash_timeout"]
 [connection signal="timeout" from="DashLag" to="." method="_on_DashLag_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
