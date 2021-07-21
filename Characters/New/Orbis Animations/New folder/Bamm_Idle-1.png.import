@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bamm_Idle-1.png-8760cad0650d671d5ccac255fd645ce8.stex"
+path="res://.import/Bamm_Idle-1.png-9f6217994a30ed4bd4f707548ea42883.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/New/Orbis Animations/bamm/Bamm_Idle-1.png"
-dest_files=[ "res://.import/Bamm_Idle-1.png-8760cad0650d671d5ccac255fd645ce8.stex" ]
+source_file="res://Characters/New/Orbis Animations/New folder/Bamm_Idle-1.png"
+dest_files=[ "res://.import/Bamm_Idle-1.png-9f6217994a30ed4bd4f707548ea42883.stex" ]
 
 [params]
 

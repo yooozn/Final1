@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bamm_Before_Battle-24.png-99f3a3bc8c00c771bbb977301bc605db.stex"
+path="res://.import/Bamm_Before_Battle-24.png-4d9e74f4e6b17f6c576f21c34087b00c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/New/Orbis Animations/bamm/Bamm_Before_Battle-24.png"
-dest_files=[ "res://.import/Bamm_Before_Battle-24.png-99f3a3bc8c00c771bbb977301bc605db.stex" ]
+source_file="res://Characters/New/Orbis Animations/New folder/Bamm_Before_Battle-24.png"
+dest_files=[ "res://.import/Bamm_Before_Battle-24.png-4d9e74f4e6b17f6c576f21c34087b00c.stex" ]
 
 [params]
 

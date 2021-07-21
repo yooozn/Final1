@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bamm_Attack_2-1.png-7ec1347f49e5303533fea31e53632eec.stex"
+path="res://.import/Bamm_Attack_2-1.png-11556580c5254c81b4daff76a5aedb3c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/New/Orbis Animations/bamm/Bamm_Attack_2-1.png"
-dest_files=[ "res://.import/Bamm_Attack_2-1.png-7ec1347f49e5303533fea31e53632eec.stex" ]
+source_file="res://Characters/New/Orbis Animations/New folder/Bamm_Attack_2-1.png"
+dest_files=[ "res://.import/Bamm_Attack_2-1.png-11556580c5254c81b4daff76a5aedb3c.stex" ]
 
 [params]
 
