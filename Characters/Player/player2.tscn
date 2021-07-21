@@ -1,0 +1,139 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Characters/New/Orbis Animations/ghost/this one will work/spritesheet (1).png" type="Texture" id=1]
+[ext_resource path="res://Characters/Player/Sprite.gd" type="Script" id=2]
+[ext_resource path="res://Characters/Player/Dash.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Characters/clouds.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30.0628, 61.5125 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Dash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../KinematicBody2D/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 13 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../KinematicBody2D/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Jump"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 5, 11 ]
+}
+
+[sub_resource type="Animation" id=5]
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 12, 23 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../KinematicBody2D/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 26, 28 ]
+}
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -6.66367, -29.0271 )
+scale = Vector2( 0.33434, 0.33434 )
+texture = ExtResource( 1 )
+hframes = 5
+vframes = 6
+frame = 26
+
+[node name="World_collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -30.8677 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+
+[node name="Dash" type="Timer" parent="."]
+wait_time = 0.074
+one_shot = true
+
+[node name="DashLag" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="sound_dash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Dash = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/Jump = SubResource( 4 )
+anims/Punch = SubResource( 5 )
+anims/Walk = SubResource( 6 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -3
+
+[node name="clouds" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 521.77, 458.391 )
+z_index = -9
+texture = ExtResource( 4 )
+
+[connection signal="timeout" from="Dash" to="." method="_on_Dash_timeout"]
+[connection signal="timeout" from="DashLag" to="." method="_on_DashLag_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
