@@ -1,5 +1,5 @@
 extends KinematicBody2D
-
+#haha baby duck
 #Direction of input from keyboard 
 var dir = Vector2()
 #The velocity of the player
