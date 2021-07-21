@@ -31,13 +31,13 @@ func _process(delta):
 		dir.x = 0
 		if Input.is_action_pressed("ui_left"):
 			dir.x = -1.0
-			$Sprite.flip_h = true
+			$Player_sprite.flip_h = true
 			
 			if !is_on_wall():
 				$AnimationPlayer.play("Walk")
 		elif Input.is_action_pressed("ui_right"):
 			dir.x = 1.0
-			$Sprite.flip_h = false
+			$Player_sprite.flip_h = false
 			if is_on_wall():
 				$AnimationPlayer.play("Walk")
 		if Input.is_action_just_pressed("jump"):
