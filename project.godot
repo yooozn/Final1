@@ -8,8 +8,38 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "State",
+"class": "IdleState",
+"language": "GDScript",
+"path": "res://State factory test/idle_state.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "PersistentState",
+"language": "GDScript",
+"path": "res://State factory test/state factory test.gd"
+}, {
+"base": "State",
+"class": "RunState",
+"language": "GDScript",
+"path": "res://State factory test/run_state.gd"
+}, {
+"base": "Node2D",
+"class": "State",
+"language": "GDScript",
+"path": "res://State factory test/State.gd"
+}, {
+"base": "Reference",
+"class": "StateFactory",
+"language": "GDScript",
+"path": "res://State factory test/state_factory.gd"
+} ]
 _global_script_class_icons={
+"IdleState": "",
+"PersistentState": "",
+"RunState": "",
+"State": "",
+"StateFactory": ""
 }
 
 [application]

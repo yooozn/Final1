@@ -1,5 +1,6 @@
 extends KinematicBody2D
-#haha baby duck
+
+
 #Direction of input from keyboard 
 var dir = Vector2()
 #The velocity of the player
@@ -32,15 +33,17 @@ func _process(delta):
 		if Input.is_action_pressed("ui_left"):
 			dir.x = -1.0
 			$Player_sprite.flip_h = true
-			
-			if !is_on_wall():
+			#detects if the player is on the ground (idk why but I need to use if on wall instead)
+			if is_on_floor():
 				$AnimationPlayer.play("Walk")
 		elif Input.is_action_pressed("ui_right"):
 			dir.x = 1.0
 			$Player_sprite.flip_h = false
-			if is_on_wall():
+			#Detects if the player is on the ground (idk why but I need to use if on wall instead)
+			if is_on_floor():
 				$AnimationPlayer.play("Walk")
 		if Input.is_action_just_pressed("jump"):
+			print("jumped")
 			vel.y = -50
 			$AnimationPlayer.stop(true)
 			$AnimationPlayer.play("Jump")
@@ -53,18 +56,16 @@ func _process(delta):
 			$AnimationPlayer.stop(true)
 			$AnimationPlayer.play("Punch")
 		#Add gravity
-		if is_on_wall():
+		if is_on_floor():
 			if dir.x == 0:
 				$AnimationPlayer.stop()
 				$AnimationPlayer.play("Idle")
-			print($AnimationPlayer.playback_active)
 #			$AnimationPlayer.stop()
-			vel.y = -gravity * delta
+			
+			vel.y -= gravity * 0.01
 		elif vel.y < term_gravity:
 			vel.y += gravity * delta
-
-
-	move_and_slide(vel * 10)
+	move_and_slide(vel * 10, Vector2(0, -1))
 	
 
 func dash():
@@ -75,7 +76,7 @@ func dash():
 	$Dash.start()
 	can_move = false
 	vel.y = 0
-	if $Sprite.flip_h == true:
+	if $Player_sprite.flip_h == true:
 		vel.x = -dash_speed 
 	else:
 		vel.x = dash_speed 
@@ -89,9 +90,11 @@ func _on_Dash_timeout():
 	pass # Replace with function body.
 
 
+
 func _on_DashLag_timeout():
 	can_move = true
 	pass # Replace with function body.
+
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

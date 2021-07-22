@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Characters/Player/Sprite.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/New/Orbis Animations/ghost/this one will work/spritesheet (1).png" type="Texture" id=2]
 [ext_resource path="res://Levels/BG/Untitled_Artwork-1.png" type="Texture" id=3]
 
@@ -132,6 +132,8 @@ position = Vector2( 515.711, 300.482 )
 scale = Vector2( 0.468446, 0.468446 )
 z_index = -9
 texture = ExtResource( 3 )
+
+[node name="jump_timer" type="Timer" parent="."]
 
 [connection signal="timeout" from="Dash" to="." method="_on_Dash_timeout"]
 [connection signal="timeout" from="DashLag" to="." method="_on_DashLag_timeout"]
