@@ -94,8 +94,8 @@ script = ExtResource( 1 )
 position = Vector2( -6.66367, -29.0271 )
 scale = Vector2( 0.33434, 0.33434 )
 texture = ExtResource( 2 )
-vframes = 6
 hframes = 5
+vframes = 6
 frame = 26
 
 [node name="World_collision" type="CollisionShape2D" parent="."]
@@ -132,6 +132,7 @@ position = Vector2( 515.711, 300.482 )
 scale = Vector2( 0.468446, 0.468446 )
 z_index = -9
 texture = ExtResource( 3 )
+
 [connection signal="timeout" from="Dash" to="." method="_on_Dash_timeout"]
 [connection signal="timeout" from="DashLag" to="." method="_on_DashLag_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
