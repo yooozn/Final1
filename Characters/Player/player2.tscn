@@ -72,7 +72,7 @@ tracks/0/keys = {
 "values": [ 12, 23 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "Punch2"
 length = 0.6
 loop = true
@@ -89,7 +89,7 @@ tracks/0/keys = {
 "values": [ 21, 17, 18, 20, 16 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -114,7 +114,7 @@ scale = Vector2( 0.33434, 0.33434 )
 texture = ExtResource( 2 )
 hframes = 5
 vframes = 6
-frame = 12
+frame = 15
 
 [node name="World_collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -30.8677 )
@@ -140,8 +140,8 @@ anims/Dash = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/Jump = SubResource( 4 )
 anims/Punch = SubResource( 5 )
-anims/Punch2 = SubResource( 7 )
-anims/Walk = SubResource( 6 )
+anims/Punch2 = SubResource( 6 )
+anims/Walk = SubResource( 7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
