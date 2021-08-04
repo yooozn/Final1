@@ -27,23 +27,19 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
+	if is_on_floor():
+		if dir.x == 0:
+			#make a fucking state machine you fat fucking bastard
+			if $AnimationPlayer.current_animation != 'Punch':
+				$AnimationPlayer.play("Idle")
+		
+		vel.y -= gravity * 0.01
+	elif vel.y < term_gravity:
+		vel.y += gravity * delta
+	vel.x = dir.x * speed
 	if can_move == true:
-		#Add gravity
-		if is_on_floor():
-			if dir.x == 0:
-				#make a fucking state machine you fat fucking bastard
-				if $AnimationPlayer.current_animation != 'Punch':
-					
-					print($AnimationPlayer.current_animation)
-	#				$AnimationPlayer.stop()
-					$AnimationPlayer.play("Idle")
-#			$AnimationPlayer.stop()
-			
-			vel.y -= gravity * 0.01
-		elif vel.y < term_gravity:
-			vel.y += gravity * delta
-		vel.x = dir.x * speed
 		dir.x = 0
+		#Add gravity
 		if Input.is_action_pressed("ui_left"):
 			dir.x = -1.0
 			$Player_sprite.flip_h = true
@@ -76,6 +72,8 @@ func _process(delta):
 		if Input.is_action_just_pressed("attack"):
 			$AnimationPlayer.stop(true)
 			$AnimationPlayer.play("Punch")
+			if self.is_on_floor():
+				can_move = false
 	move_and_slide(vel * 10, Vector2(0, -1))
 	
 
@@ -110,4 +108,6 @@ func _on_DashLag_timeout():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$AnimationPlayer.play("Idle")
+	if anim_name == ('Punch'):
+		can_move = true
 	pass # Replace with function body.
