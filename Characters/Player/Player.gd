@@ -39,24 +39,29 @@ func _process(delta):
 	elif vel.y < term_gravity:
 		vel.y += gravity * delta
 	vel.x = dir.x * speed
-	if can_move == true:
+	input_stuff()
+	move_and_slide(vel * 10, Vector2(0, -1))
+	
+
+func input_stuff():
+
 		dir.x = 0
 		#Add gravity
 		if Input.is_action_pressed("ui_left"):
 			dir.x = -1.0
 			$Player_sprite.flip_h = true
-			#detects if the player is on the ground (idk why but I need to use if on wall instead)
-			if is_on_floor():
-				$AnimationPlayer.play("Walk")
+			if can_move == true:
+				if is_on_floor():
+					$AnimationPlayer.play("Walk")
 				
 				
 				
 		elif Input.is_action_pressed("ui_right"):
 			dir.x = 1.0
 			$Player_sprite.flip_h = false
-			#Detects if the player is on the ground (idk why but I need to use if on wall instead)
-			if is_on_floor():
-				$AnimationPlayer.play("Walk")
+			if can_move == true:
+				if is_on_floor():
+					$AnimationPlayer.play("Walk")
 		if Input.is_action_just_pressed("jump"):
 			print("jumped")
 			if self.is_on_floor():
@@ -75,8 +80,6 @@ func _process(delta):
 			$AnimationPlayer.stop(true)
 			$AnimationPlayer.play("Punch")
 			can_move = false
-	move_and_slide(vel * 10, Vector2(0, -1))
-	
 
 func dash():
 	$sound_dash.play(0.0)
@@ -108,7 +111,10 @@ func _on_DashLag_timeout():
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	$AnimationPlayer.play("Idle")
+	if self.is_on_floor():
+		$AnimationPlayer.play("Idle")
+	else: 
+		$AnimationPlayer.play("Jump")
 	if anim_name == ('Punch'):
 		can_move = true
 	pass # Replace with function body.
