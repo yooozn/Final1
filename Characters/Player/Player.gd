@@ -28,6 +28,16 @@ func _ready():
 
 func _process(delta):
 	if can_move == true:
+		#Add gravity
+		if is_on_floor():
+			if dir.x == 0:
+#				$AnimationPlayer.stop()
+				$AnimationPlayer.play("Idle")
+#			$AnimationPlayer.stop()
+			
+			vel.y -= gravity * 0.01
+		elif vel.y < term_gravity:
+			vel.y += gravity * delta
 		vel.x = dir.x * speed
 		dir.x = 0
 		if Input.is_action_pressed("ui_left"):
@@ -36,6 +46,9 @@ func _process(delta):
 			#detects if the player is on the ground (idk why but I need to use if on wall instead)
 			if is_on_floor():
 				$AnimationPlayer.play("Walk")
+				
+				
+				
 		elif Input.is_action_pressed("ui_right"):
 			dir.x = 1.0
 			$Player_sprite.flip_h = false
@@ -44,9 +57,13 @@ func _process(delta):
 				$AnimationPlayer.play("Walk")
 		if Input.is_action_just_pressed("jump"):
 			print("jumped")
-			vel.y = -50
-			$AnimationPlayer.stop(true)
-			$AnimationPlayer.play("Jump")
+			if self.is_on_floor():
+				$AnimationPlayer.play("Walk")
+				print('is on floor')
+				vel.y = -50
+#				$AnimationPlayer.stop(true)
+				$AnimationPlayer.play("Jump")
+				print($AnimationPlayer.playback_active)
 #		$AnimationPlayer.play("Jump")
 		if Input.is_action_just_released("jump") and vel.y < 0:
 			vel.y = 0
@@ -55,16 +72,6 @@ func _process(delta):
 		if Input.is_action_just_pressed("attack"):
 			$AnimationPlayer.stop(true)
 			$AnimationPlayer.play("Punch")
-		#Add gravity
-		if is_on_floor():
-			if dir.x == 0:
-				$AnimationPlayer.stop()
-				$AnimationPlayer.play("Idle")
-#			$AnimationPlayer.stop()
-			
-			vel.y -= gravity * 0.01
-		elif vel.y < term_gravity:
-			vel.y += gravity * delta
 	move_and_slide(vel * 10, Vector2(0, -1))
 	
 
