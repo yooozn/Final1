@@ -31,8 +31,12 @@ func _process(delta):
 		#Add gravity
 		if is_on_floor():
 			if dir.x == 0:
-#				$AnimationPlayer.stop()
-				$AnimationPlayer.play("Idle")
+				#make a fucking state machine you fat fucking bastard
+				if $AnimationPlayer.current_animation != 'Punch':
+					
+					print($AnimationPlayer.current_animation)
+	#				$AnimationPlayer.stop()
+					$AnimationPlayer.play("Idle")
 #			$AnimationPlayer.stop()
 			
 			vel.y -= gravity * 0.01
