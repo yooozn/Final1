@@ -28,10 +28,12 @@ func _ready():
 
 func _process(delta):
 	if is_on_floor():
-		if dir.x == 0:
 			#make a fucking state machine you fat fucking bastard
-			if $AnimationPlayer.current_animation != 'Punch':
+		if $AnimationPlayer.current_animation != 'Punch':
+			if dir.x == 0:
 				$AnimationPlayer.play("Idle")
+		else:
+			dir.x = 0
 		
 		vel.y -= gravity * 0.01
 	elif vel.y < term_gravity:
@@ -72,8 +74,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("attack"):
 			$AnimationPlayer.stop(true)
 			$AnimationPlayer.play("Punch")
-			if self.is_on_floor():
-				can_move = false
+			can_move = false
 	move_and_slide(vel * 10, Vector2(0, -1))
 	
 
