@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/New/Orbis Animations/ghost/this one will work/spritesheet (1).png" type="Texture" id=2]
@@ -72,6 +72,23 @@ tracks/0/keys = {
 "values": [ 12, 23 ]
 }
 
+[sub_resource type="Animation" id=7]
+resource_name = "Punch (copy)"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 21, 17, 18, 20, 16 ]
+}
+
 [sub_resource type="Animation" id=6]
 length = 0.2
 loop = true
@@ -97,7 +114,7 @@ scale = Vector2( 0.33434, 0.33434 )
 texture = ExtResource( 2 )
 hframes = 5
 vframes = 6
-frame = 13
+frame = 16
 
 [node name="World_collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -30.8677 )
@@ -123,6 +140,7 @@ anims/Dash = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/Jump = SubResource( 4 )
 anims/Punch = SubResource( 5 )
+"anims/Punch (copy)" = SubResource( 7 )
 anims/Walk = SubResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -135,6 +153,8 @@ z_index = -9
 texture = ExtResource( 3 )
 
 [node name="jump_timer" type="Timer" parent="."]
+
+[node name="Attack_timer" type="Timer" parent="."]
 
 [connection signal="timeout" from="Dash" to="." method="_on_Dash_timeout"]
 [connection signal="timeout" from="DashLag" to="." method="_on_DashLag_timeout"]
