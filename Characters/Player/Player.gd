@@ -32,8 +32,8 @@ func _process(delta):
 		if $AnimationPlayer.current_animation != 'Punch':
 			if dir.x == 0:
 				$AnimationPlayer.play("Idle")
-		else:
-			dir.x = 0
+#		else:
+#			dir.x = 0
 		
 		vel.y -= gravity * 0.01
 	elif vel.y < term_gravity:
