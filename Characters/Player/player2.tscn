@@ -73,7 +73,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "Punch (copy)"
+resource_name = "Punch2"
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -114,7 +114,7 @@ scale = Vector2( 0.33434, 0.33434 )
 texture = ExtResource( 2 )
 hframes = 5
 vframes = 6
-frame = 16
+frame = 12
 
 [node name="World_collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -30.8677 )
@@ -140,7 +140,7 @@ anims/Dash = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/Jump = SubResource( 4 )
 anims/Punch = SubResource( 5 )
-"anims/Punch (copy)" = SubResource( 7 )
+anims/Punch2 = SubResource( 7 )
 anims/Walk = SubResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -156,6 +156,10 @@ texture = ExtResource( 3 )
 
 [node name="Attack_timer" type="Timer" parent="."]
 
+[node name="Attack_timer2" type="Timer" parent="."]
+
 [connection signal="timeout" from="Dash" to="." method="_on_Dash_timeout"]
 [connection signal="timeout" from="DashLag" to="." method="_on_DashLag_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Attack_timer" to="." method="_on_Attack_timer_timeout"]
+[connection signal="timeout" from="Attack_timer2" to="." method="_on_Attack_timer2_timeout"]

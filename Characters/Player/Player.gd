@@ -22,6 +22,8 @@ var can_move = true
 #The speed of the player dash
 var dash_speed = 200
 
+var jab_num = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -77,6 +79,7 @@ func input_stuff():
 		if Input.is_action_just_pressed("Dash"):
 			dash()
 		if Input.is_action_just_pressed("attack"):
+#			jab = 1
 			$AnimationPlayer.stop(true)
 			$AnimationPlayer.play("Punch")
 			can_move = false
@@ -117,4 +120,14 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$AnimationPlayer.play("Jump")
 	if anim_name == ('Punch'):
 		can_move = true
+	pass # Replace with function body.
+
+
+func _on_Attack_timer_timeout():
+	$Attack_timer2.start
+	pass # Replace with function body.
+
+
+func _on_Attack_timer2_timeout():
+	
 	pass # Replace with function body.
