@@ -44,7 +44,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Metro_venia"
+config/name="Orbis"
 run/main_scene="res://does god hate me .tscn"
 config/icon="res://icon.png"
 

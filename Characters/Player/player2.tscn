@@ -15,33 +15,32 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.0628, 61.5125 )
 
-[sub_resource type="ShaderMaterial" id=12]
+[sub_resource type="ShaderMaterial" id=2]
 render_priority = 1
 shader = ExtResource( 8 )
 shader_param/blur_amount = 3.147
 shader_param/vignette = ExtResource( 6 )
 
-[sub_resource type="Curve" id=15]
+[sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, -5.01433, 0, 0, Vector2( 0.480263, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 5.20741, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=16]
-curve = SubResource( 15 )
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
 
-[sub_resource type="ShaderMaterial" id=14]
+[sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 9 )
-shader_param/curve = 0.029
+shader_param/curve = 0.035
 shader_param/zoom = 1.0
 shader_param/tiled_factor = Vector2( 0, 0 )
-shader_param/vignette = SubResource( 16 )
+shader_param/vignette = SubResource( 4 )
 
-[sub_resource type="ShaderMaterial" id=9]
+[sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 10 )
 shader_param/amount = 0.006
 shader_param/blur_amount = 0.0
 shader_param/vignette = ExtResource( 6 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "Dash"
+[sub_resource type="Animation" id=7]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Player_sprite:frame")
@@ -56,8 +55,7 @@ tracks/0/keys = {
 "values": [ 13 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Idle"
+[sub_resource type="Animation" id=8]
 length = 5.0
 loop = true
 tracks/0/type = "value"
@@ -73,8 +71,7 @@ tracks/0/keys = {
 "values": [ 15 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Jump"
+[sub_resource type="Animation" id=9]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Player_sprite:frame")
@@ -89,7 +86,7 @@ tracks/0/keys = {
 "values": [ 5, 11 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=10]
 length = 0.1
 step = 0.025
 tracks/0/type = "value"
@@ -105,8 +102,7 @@ tracks/0/keys = {
 "values": [ 12, 23 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Punch2"
+[sub_resource type="Animation" id=11]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -122,7 +118,7 @@ tracks/0/keys = {
 "values": [ 21, 17, 18, 20, 16 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=12]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -178,9 +174,8 @@ zoom = Vector2( 1.5, 1.5 )
 layer = 11
 
 [node name="Edge blur" type="Sprite" parent="Camera2D/Post Processing"]
-visible = false
-material = SubResource( 12 )
-position = Vector2( 590.658, 318.142 )
+material = SubResource( 2 )
+position = Vector2( 571.78, 389.876 )
 scale = Vector2( 18.064, 12.329 )
 z_index = 34
 texture = ExtResource( 7 )
@@ -189,9 +184,8 @@ texture = ExtResource( 7 )
 layer = 17
 
 [node name="Curve" type="Sprite" parent="Camera2D/Post Processing/Curve"]
-visible = false
-material = SubResource( 14 )
-position = Vector2( 577.862, 412.062 )
+material = SubResource( 5 )
+position = Vector2( 575.974, 547.98 )
 scale = Vector2( 18.164, 17.397 )
 z_index = 38
 texture = ExtResource( 7 )
@@ -199,9 +193,8 @@ texture = ExtResource( 7 )
 [node name="chromatic abberation" type="CanvasLayer" parent="Camera2D/Post Processing"]
 
 [node name="chromatic abberation" type="Sprite" parent="Camera2D/Post Processing/chromatic abberation"]
-visible = false
-material = SubResource( 9 )
-position = Vector2( 581.123, 388.067 )
+material = SubResource( 6 )
+position = Vector2( 575.123, 392.067 )
 scale = Vector2( 18.064, 12.329 )
 z_index = 38
 texture = ExtResource( 7 )
@@ -209,7 +202,8 @@ texture = ExtResource( 7 )
 [node name="chromatic abberation2" type="CanvasLayer" parent="Camera2D/Post Processing"]
 
 [node name="chromatic abberation" type="Sprite" parent="Camera2D/Post Processing/chromatic abberation2"]
-material = SubResource( 9 )
+visible = false
+material = SubResource( 6 )
 position = Vector2( 581.123, 388.067 )
 scale = Vector2( 18.064, 12.329 )
 z_index = 38
@@ -228,12 +222,12 @@ stream = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Dash = SubResource( 2 )
-anims/Idle = SubResource( 3 )
-anims/Jump = SubResource( 4 )
-anims/Punch = SubResource( 5 )
-anims/Punch2 = SubResource( 6 )
-anims/Walk = SubResource( 7 )
+anims/Dash = SubResource( 7 )
+anims/Idle = SubResource( 8 )
+anims/Jump = SubResource( 9 )
+anims/Punch = SubResource( 10 )
+anims/Punch2 = SubResource( 11 )
+anims/Walk = SubResource( 12 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
