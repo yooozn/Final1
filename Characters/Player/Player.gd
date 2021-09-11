@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+signal grounded_updated(is_grounded)
 
 #Direction of input from keyboard 
 var dir = Vector2()
@@ -8,32 +9,44 @@ var vel = Vector2()
 #The factor in which the player accelerates 
 var acel = 1
 #The max speed of the player
-var speed = 30
+var speed = 50
+
 #The time spent in the air
-var jump_time = 0.6
+var jump_time = 0.1
 #The jump height of the player
-var jump = 30
+var jump = 100
 #The ammount of gravity applied to the player 
-var gravity = 90.8
+var gravity = 180.8
 #Terminal velocity 
 var term_gravity = 100
 #Kinda self explainitory
 var can_move = true
+var is_jumping = false
+var is_grounded
 #The speed of the player dash
-var dash_speed = 200
-
+var dash_speed = 400
 var jab_num = 1
+
+#Particles
+var jump_particles = preload("res://Characters/Player/Jump_particles.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	if is_on_floor():
+	var was_grounded = is_grounded
+	is_grounded = is_on_floor()
+	
+	if was_grounded == null || is_grounded != was_grounded:
+		emit_signal("grounded_updated", is_grounded)
+	
+	if is_grounded == true:
 			#make a fucking state machine you fat fucking bastard
 		if $AnimationPlayer.current_animation != 'Punch' or $AnimationPlayer.current_animation != 'Punch2':
 			if dir.x == 0:
-				$AnimationPlayer.play("Idle")
+				if can_move == true:
+					$AnimationPlayer.play("Idle")
 #		else:
 #			dir.x = 0
 		
@@ -46,12 +59,11 @@ func _process(delta):
 	
 
 func input_stuff():
-
 	dir.x = 0
 		#Add gravity
 	if Input.is_action_pressed("ui_left"):
-		dir.x = -1.0
 		$Player_sprite.flip_h = true
+		dir.x = -1.0
 		if can_move == true:
 			if is_on_floor():
 				$AnimationPlayer.play("Walk")
@@ -59,28 +71,47 @@ func input_stuff():
 				
 				
 	elif Input.is_action_pressed("ui_right"):
-		dir.x = 1.0
 		$Player_sprite.flip_h = false
+		dir.x = 1.0
 		if can_move == true:
 			if is_on_floor():
 				$AnimationPlayer.play("Walk")
 	if Input.is_action_just_pressed("jump"):
 		print("jumped")
-		if self.is_on_floor():
-			$AnimationPlayer.play("Walk")
-			print('is on floor')
-			vel.y = -50
-#				$AnimationPlayer.stop(true)
-			$AnimationPlayer.play("Jump")
-			print($AnimationPlayer.playback_active)
+		jump('up')
 #		$AnimationPlayer.play("Jump")
 	if Input.is_action_just_released("jump") and vel.y < 0:
-		vel.y = 0
+		jump('down')
 	if Input.is_action_just_pressed("Dash"):
 		dash()
 	if Input.is_action_just_pressed("attack"):
 		attack()
 
+func jump(state):
+	if state == 'up':
+		if self.is_on_floor():
+			partical_make(jump_particles, self.position + Vector2(0, 25))
+			$jump_timer.start(jump_time)
+			$AnimationPlayer.play("Walk")
+			print('is on floor')
+			vel.y = -jump
+	#		$AnimationPlayer.stop(true)
+			$AnimationPlayer.play("Jump")
+			print($AnimationPlayer.playback_active)
+		if self.is_on_wall():
+			partical_make(jump_particles, self.position + Vector2(0, 25))
+			$jump_timer.start(jump_time)
+			$AnimationPlayer.play("Walk")
+			print('is on floor')
+			vel.y = -jump
+	#		$AnimationPlayer.stop(true)
+			$AnimationPlayer.play("Jump")
+			print($AnimationPlayer.playback_active)
+
+	if state == 'down':
+		if $jump_timer.time_left <= 0:
+			if not Input.is_action_pressed("jump"):
+				vel.y = 0
 func attack():
 	$AnimationPlayer.stop(true)
 #	$AnimationPlayer.play("Punch")
@@ -95,6 +126,7 @@ func attack():
 	can_move = false
 
 func dash():
+	partical_make(jump_particles, self.position + Vector2(0, 25))
 	$sound_dash.play(0.0)
 	$AnimationPlayer.stop(true)
 	$AnimationPlayer.play("Dash")
@@ -108,8 +140,13 @@ func dash():
 		vel.x = dash_speed
 	pass
 
+func partical_make(name, position):
+	var particle_effect = name.instance()
+	particle_effect.position = position
+	add_child(particle_effect)
 
 func _on_Dash_timeout():
+	print('timeout')
 	vel.x = dir.x * speed
 	vel.y += gravity * 0.1
 	$DashLag.start()
@@ -117,7 +154,9 @@ func _on_Dash_timeout():
 
 
 
+
 func _on_DashLag_timeout():
+	print('dashlag')
 	can_move = true
 	pass # Replace with function body.
 
@@ -140,4 +179,10 @@ func _on_Attack_timer_timeout():
 
 func _on_Attack_timer2_timeout():
 	jab_num = 1
+	pass # Replace with function body.
+
+
+func _on_jump_timer_timeout():
+	print('ended')
+	jump('down')
 	pass # Replace with function body.
