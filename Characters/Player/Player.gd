@@ -10,7 +10,7 @@ var vel = Vector2()
 var acel = 1
 #The max speed of the player
 var speed = 50
-
+export var health = 3
 #The time spent in the air
 var jump_time = 0.1
 #The jump height of the player
@@ -56,7 +56,6 @@ func _process(delta):
 	vel.x = dir.x * speed
 	input_stuff()
 	move_and_slide(vel * 10, Vector2(0, -1))
-	
 
 func input_stuff():
 	dir.x = 0
@@ -124,6 +123,11 @@ func attack():
 		$AnimationPlayer.play("Punch")
 		$Attack_timer.start()
 	can_move = false
+
+func damage(damage):
+	health -= damage
+	$Effects._damage()
+	pass
 
 func dash():
 	partical_make(jump_particles, self.position + Vector2(0, 25))
