@@ -13,13 +13,13 @@
 [ext_resource path="res://Levels/Tileset/trees/Tree_1-2.png" type="Texture" id=11]
 [ext_resource path="res://waterfal.tscn" type="PackedScene" id=16]
 
-[sub_resource type="ShaderMaterial" id=13]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 8 )
 shader_param/angle_degrees = null
 shader_param/Samples = 8
 shader_param/strength = 0.1481
 
-[sub_resource type="ParticlesMaterial" id=14]
+[sub_resource type="ParticlesMaterial" id=2]
 emission_shape = 2
 emission_box_extents = Vector3( 1000, 1000, 100 )
 flag_disable_z = true
@@ -34,7 +34,7 @@ scale = 1.8
 scale_random = 0.88
 color = Color( 1, 0.996078, 0.537255, 0.67451 )
 
-[sub_resource type="Environment" id=15]
+[sub_resource type="Environment" id=3]
 background_mode = 4
 auto_exposure_enabled = true
 auto_exposure_scale = 0.07
@@ -74,7 +74,6 @@ follow_viewport_enable = true
 follow_viewport_scale = 0.119
 
 [node name="Node2D" parent="Foilage/BG4" instance=ExtResource( 16 )]
-visible = false
 modulate = Color( 0.427451, 0.427451, 0.427451, 1 )
 position = Vector2( -1548.5, -1306.64 )
 scale = Vector2( 10.8245, 10.8245 )
@@ -85,7 +84,6 @@ follow_viewport_enable = true
 follow_viewport_scale = 0.723
 
 [node name="TileMap2" type="TileMap" parent="Foilage/BG"]
-visible = false
 modulate = Color( 0, 0, 0, 1 )
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 256, 256 )
@@ -197,7 +195,7 @@ follow_viewport_scale = 1.68
 
 [node name="TileMap2" type="TileMap" parent="Foilage/FG4"]
 modulate = Color( 0.0313726, 0.054902, 0.0235294, 1 )
-material = SubResource( 13 )
+material = SubResource( 1 )
 position = Vector2( 252, -172 )
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 511, 385 )
@@ -215,7 +213,7 @@ modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
 amount = 44
 lifetime = 193.5
 explosiveness = 1.0
-process_material = SubResource( 14 )
+process_material = SubResource( 2 )
 texture = ExtResource( 6 )
 
 [node name="FG7" type="CanvasLayer" parent="Foilage"]
@@ -229,7 +227,7 @@ amount = 32
 lifetime = 193.5
 speed_scale = 0.0
 explosiveness = 1.0
-process_material = SubResource( 14 )
+process_material = SubResource( 2 )
 texture = ExtResource( 6 )
 
 [node name="Node2D2" parent="." instance=ExtResource( 3 )]
@@ -237,7 +235,7 @@ position = Vector2( -362.168, 309.61 )
 scale = Vector2( 1, 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 15 )
+environment = SubResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
