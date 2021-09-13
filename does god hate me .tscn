@@ -74,7 +74,6 @@ follow_viewport_enable = true
 follow_viewport_scale = 0.119
 
 [node name="Node2D" parent="Foilage/BG4" instance=ExtResource( 16 )]
-modulate = Color( 0.427451, 0.427451, 0.427451, 1 )
 position = Vector2( -1548.5, -1306.64 )
 scale = Vector2( 10.8245, 10.8245 )
 
