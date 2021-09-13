@@ -126,6 +126,7 @@ func attack():
 
 func damage(damage):
 	health -= damage
+	print('current health is', health)
 	$Effects._damage()
 	pass
 

@@ -107,7 +107,7 @@ z_index = -1
 texture = ExtResource( 11 )
 
 [node name="TileMap2" type="TileMap" parent="Foilage/BG3"]
-modulate = Color( 0.0470588, 0.14902, 0.109804, 1 )
+modulate = Color( 0, 0, 0, 1 )
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 256, 256 )
 cell_y_sort = true
@@ -243,3 +243,5 @@ stream = ExtResource( 7 )
 position = Vector2( -256.976, 223.994 )
 group = "Player"
 Event = "test()"
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
