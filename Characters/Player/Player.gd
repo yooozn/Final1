@@ -10,7 +10,12 @@ var vel = Vector2()
 var acel = 1
 #The max speed of the player
 var speed = 50
-
+#The health
+var health = 5
+#Taking damage 
+var damage = -1
+#death 
+var death = 0
 #The time spent in the air
 var jump_time = 0.1
 #The jump height of the player
@@ -186,3 +191,10 @@ func _on_jump_timer_timeout():
 	print('ended')
 	jump('down')
 	pass # Replace with function body.
+
+func sprite(Hearts): 
+	pass # still working on it
+
+func Collision_shape_2D(Playerhit):
+	print ('hit')
+	health = -1  #still working on it 
