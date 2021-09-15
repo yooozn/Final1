@@ -238,11 +238,12 @@ layer = 6
 follow_viewport_enable = true
 follow_viewport_scale = 1.943
 
-[node name="Particles2D" type="Particles2D" parent="Foilage/FG6"]
+[node name="Bokeh" type="Particles2D" parent="Foilage/FG6"]
 modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
 amount = 44
 lifetime = 193.5
 explosiveness = 1.0
+visibility_rect = Rect2( -1600, -200, 4400, 4400 )
 process_material = SubResource( 2 )
 texture = ExtResource( 6 )
 
@@ -278,6 +279,34 @@ scale = Vector2( 6.3743, 4.90707 )
 group = "Player"
 Event = "test()"
 Damage = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Area2D"]
+margin_left = -10.6275
+margin_top = -16.8621
+margin_right = 53.3725
+margin_bottom = 15.1379
+rect_scale = Vector2( 0.238591, 0.238591 )
+text = "Damage"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D2" parent="." instance=ExtResource( 9 )]
+position = Vector2( -129.359, 207.727 )
+scale = Vector2( 6.3743, 4.90707 )
+group = "Player"
+Event = "test()"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Area2D2"]
+margin_left = -10.2409
+margin_top = -13.8879
+margin_right = 53.7591
+margin_bottom = 18.1121
+rect_scale = Vector2( 0.238591, 0.238591 )
+text = "Heal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

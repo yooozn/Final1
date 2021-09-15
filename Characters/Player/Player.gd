@@ -133,7 +133,7 @@ func damage(damage):
 		$DamageTimer.start(0.0)
 		$sound_damage.play(0.0)
 		print(damage)
-		health -= 1
+		health -= damage
 		$Effects._damage(self.position)
 		health_update()
 	pass

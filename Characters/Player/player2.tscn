@@ -42,7 +42,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0 ]
+"values": [ 0.0, 1.0, 0.0, 1.0, 0.0, 0.8, 0.0, 0.7, 0.0, 0.422, 0.0 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Camera2D/Post Processing/chromatic abberation/chromatic abberation:material:shader_param/amount")

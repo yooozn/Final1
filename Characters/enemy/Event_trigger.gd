@@ -19,6 +19,9 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	
 	if body.is_in_group(group):
-		body.damage(1)
+		if Damage == true:
+			body.damage(1)
+		if Damage == false:
+			body.damage(-1)
 	print(body)
 	pass # Replace with function body.
