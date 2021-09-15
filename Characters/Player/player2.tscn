@@ -20,7 +20,7 @@ extents = Vector2( 30.0628, 61.5125 )
 [sub_resource type="ShaderMaterial" id=2]
 render_priority = 1
 shader = ExtResource( 8 )
-shader_param/blur_amount = 3.147
+shader_param/blur_amount = 1.245
 shader_param/vignette = ExtResource( 6 )
 
 [sub_resource type="Curve" id=3]
