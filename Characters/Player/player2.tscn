@@ -80,6 +80,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0.052, 0.071 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Camera2D/Post Processing/Edge blur/Edge blur:material:shader_param/blur_amount")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.05, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.579, 0.0, 0.579 ]
+}
 
 [sub_resource type="Shader" id=16]
 code = "shader_type canvas_item;
@@ -285,7 +297,7 @@ texture = ExtResource( 7 )
 [node name="ui" type="Node2D" parent="Camera2D/Post Processing/Curve"]
 
 [node name="Health" type="CanvasLayer" parent="Camera2D/Post Processing/Curve/ui"]
-layer = 21
+layer = 16
 script = ExtResource( 16 )
 
 [node name="Health_Bar_2 (1)" type="Sprite" parent="Camera2D/Post Processing/Curve/ui/Health"]
@@ -335,11 +347,11 @@ layer = 12
 material = SubResource( 2 )
 position = Vector2( 573.916, 392.529 )
 scale = Vector2( 18.064, 12.329 )
-z_index = 34
+z_index = 36
 texture = ExtResource( 7 )
 
 [node name="damage vingette" type="Sprite" parent="Camera2D/Post Processing/Edge blur"]
-modulate = Color( 0.826528, 0.660438, 0.660438, 0.129412 )
+modulate = Color( 0.996078, 0.796078, 0.796078, 0 )
 position = Vector2( 572.216, 323.186 )
 scale = Vector2( 0.601395, 0.601395 )
 z_index = -1
@@ -358,7 +370,7 @@ stream = ExtResource( 11 )
 
 [node name="sound_damage" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 17 )
-volume_db = 1.0
+volume_db = 0.642
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"

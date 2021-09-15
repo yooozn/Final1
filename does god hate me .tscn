@@ -58,7 +58,7 @@ position = Vector2( 1, 0 )
 [node name="Player" parent="." groups=[
 "Player",
 ] instance=ExtResource( 1 )]
-position = Vector2( 21, -14 )
+position = Vector2( 345.196, 163.99 )
 z_as_relative = false
 
 [node name="6618-normal" type="Sprite" parent="."]
@@ -310,4 +310,5 @@ __meta__ = {
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = 16.929
 autoplay = true
