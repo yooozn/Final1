@@ -176,7 +176,11 @@ layer = 11
 
 [node name="Edge blur" type="Sprite" parent="Camera2D/Post Processing"]
 material = SubResource( 2 )
+<<<<<<< Updated upstream
 position = Vector2( 5113.12, -293.397 )
+=======
+position = Vector2( 10348.8, -799.489 )
+>>>>>>> Stashed changes
 scale = Vector2( 18.064, 12.329 )
 z_index = 34
 texture = ExtResource( 7 )
@@ -186,7 +190,11 @@ layer = 17
 
 [node name="Curve" type="Sprite" parent="Camera2D/Post Processing/Curve"]
 material = SubResource( 5 )
+<<<<<<< Updated upstream
 position = Vector2( 4939.77, -81.0439 )
+=======
+position = Vector2( 9919.55, -661.544 )
+>>>>>>> Stashed changes
 scale = Vector2( 18.164, 17.397 )
 z_index = 38
 texture = ExtResource( 7 )
@@ -202,6 +210,7 @@ texture = ExtResource( 7 )
 
 [node name="chromatic abberation2" type="CanvasLayer" parent="Camera2D/Post Processing"]
 
+<<<<<<< Updated upstream
 [node name="chromatic abberation" type="Sprite" parent="Camera2D/Post Processing/chromatic abberation2"]
 visible = false
 material = SubResource( 6 )
@@ -209,6 +218,14 @@ position = Vector2( 581.123, 388.067 )
 scale = Vector2( 18.064, 12.329 )
 z_index = 38
 texture = ExtResource( 7 )
+=======
+[node name="damage vingette" type="Sprite" parent="Camera2D/Post Processing/chromatic abberation2"]
+modulate = Color( 0.996078, 0.796078, 0.796078, 0 )
+position = Vector2( 10729.5, -531.691 )
+scale = Vector2( 0.601395, 0.601395 )
+z_index = -1
+texture = ExtResource( 13 )
+>>>>>>> Stashed changes
 
 [node name="Dash" type="Timer" parent="."]
 wait_time = 0.2
@@ -233,8 +250,13 @@ anims/Walk = SubResource( 12 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
 
+<<<<<<< Updated upstream
 [node name="clouds" type="Sprite" parent="CanvasLayer"]
 position = Vector2( 5030.99, -374.039 )
+=======
+[node name="BG" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 10130.7, -703.826 )
+>>>>>>> Stashed changes
 scale = Vector2( 0.588, 0.588 )
 z_index = -9
 texture = ExtResource( 3 )
