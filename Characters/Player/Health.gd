@@ -42,7 +42,7 @@ func _on_Player_health_update(health_):
 		$"4".visible = false
 		$"5".visible = false
 	if health_ == 0:
-		$"1".visible = true
+		$"1".visible = false
 		$"2".visible = false
 		$"3".visible = false
 		$"4".visible = false
