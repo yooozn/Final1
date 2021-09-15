@@ -126,8 +126,12 @@ func attack():
 
 func damage(damage):
 	health -= damage
-	print('current health is', health)
 	$Effects._damage()
+	health_update()
+	pass
+
+func health_update():
+	print('current health is ', health)
 	pass
 
 func dash():

@@ -13,7 +13,6 @@
 [ext_resource path="res://Characters/Player/Dash.mp3" type="AudioStream" id=11]
 [ext_resource path="res://Characters/Player/Effects.gd" type="Script" id=12]
 [ext_resource path="res://Characters/Player/damage vingette.png" type="Texture" id=13]
-[ext_resource path="res://waterfal.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.0628, 61.5125 )
@@ -137,6 +136,9 @@ tracks/0/keys = {
 "values": [ 26, 28 ]
 }
 
+[sub_resource type="OccluderPolygon2D" id=14]
+polygon = PoolVector2Array( -10.4957, -4.00331, -5.36686, -4.08608, -5.57764, 4.02564, -11.1983, 4.60504 )
+
 [sub_resource type="Animation" id=13]
 resource_name = "Damage"
 length = 0.2
@@ -191,10 +193,9 @@ shape = SubResource( 1 )
 zoom = Vector2( 1.5, 1.5 )
 
 [node name="Post Processing" type="CanvasLayer" parent="Camera2D"]
-layer = 11
+layer = 13
 
 [node name="Edge blur" type="Sprite" parent="Camera2D/Post Processing"]
-visible = false
 material = SubResource( 2 )
 position = Vector2( 571.78, 389.876 )
 scale = Vector2( 18.064, 12.329 )
@@ -202,10 +203,9 @@ z_index = 34
 texture = ExtResource( 7 )
 
 [node name="Curve" type="CanvasLayer" parent="Camera2D/Post Processing"]
-layer = 17
+layer = 18
 
 [node name="Curve" type="Sprite" parent="Camera2D/Post Processing/Curve"]
-visible = false
 material = SubResource( 5 )
 position = Vector2( 575.974, 547.98 )
 scale = Vector2( 18.164, 17.397 )
@@ -213,9 +213,9 @@ z_index = 38
 texture = ExtResource( 7 )
 
 [node name="chromatic abberation" type="CanvasLayer" parent="Camera2D/Post Processing"]
+layer = 11
 
 [node name="chromatic abberation" type="Sprite" parent="Camera2D/Post Processing/chromatic abberation"]
-visible = false
 material = SubResource( 6 )
 position = Vector2( 575.123, 392.067 )
 scale = Vector2( 18.064, 12.329 )
@@ -223,9 +223,9 @@ z_index = 38
 texture = ExtResource( 7 )
 
 [node name="chromatic abberation2" type="CanvasLayer" parent="Camera2D/Post Processing"]
+layer = 12
 
 [node name="chromatic abberation" type="Sprite" parent="Camera2D/Post Processing/chromatic abberation2"]
-visible = false
 material = SubResource( 6 )
 position = Vector2( 581.123, 388.067 )
 scale = Vector2( 18.064, 12.329 )
@@ -262,11 +262,6 @@ anims/Walk = SubResource( 12 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
 
-[node name="Node2D" parent="CanvasLayer" instance=ExtResource( 14 )]
-visible = false
-position = Vector2( 316.116, 114.833 )
-scale = Vector2( 1.25722, 1.25722 )
-
 [node name="BG" type="Sprite" parent="CanvasLayer"]
 position = Vector2( 630.202, 462.117 )
 scale = Vector2( 0.588, 0.588 )
@@ -283,13 +278,24 @@ one_shot = true
 [node name="jump_particles" type="Node2D" parent="."]
 position = Vector2( -14.1581, 28.7882 )
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+position = Vector2( 89.1344, -12.539 )
+scale = Vector2( 12.6804, 10.7632 )
+occluder = SubResource( 14 )
+
 [node name="Light2D" type="Light2D" parent="."]
 visible = false
-position = Vector2( 87.2445, -15.6888 )
+position = Vector2( -10.0381, -11.6982 )
 scale = Vector2( 12.6804, 10.7632 )
 texture = ExtResource( 5 )
-energy = 0.62
+texture_scale = 0.16
+energy = 1.39
+range_height = 16.1
+range_layer_min = -19
+range_layer_max = 8
 shadow_enabled = true
+shadow_gradient_length = 3.0
 
 [node name="Effects" type="AnimationPlayer" parent="."]
 anims/Damage = SubResource( 13 )
