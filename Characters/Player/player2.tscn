@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/New/Orbis Animations/ghost/this one will work/spritesheet (1).png" type="Texture" id=2]
@@ -16,6 +16,87 @@
 [ext_resource path="res://Health_Bar_1_(fixed) (1).png" type="Texture" id=14]
 [ext_resource path="res://Health_Bar_2 (1).png" type="Texture" id=15]
 [ext_resource path="res://Characters/Player/Health.gd" type="Script" id=16]
+[ext_resource path="res://hit_placerholder.mp3" type="AudioStream" id=17]
+
+[sub_resource type="Animation" id=14]
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D/Post Processing/Edge blur/damage vingette:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.95 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.996078, 0.796078, 0.796078, 0 ), Color( 0.0352941, 0.027451, 0.027451, 0.733333 ), Color( 0.996078, 0.796078, 0.796078, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player_sprite:material:shader_param/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera2D/Post Processing/chromatic abberation/chromatic abberation:material:shader_param/amount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.004, 0.037, 0.004 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera2D/Post Processing/Curve/Curve:material:shader_param/zoom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.893, 1.0, 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Camera2D/Post Processing/Curve/Curve:material:shader_param/tiled_factor")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.052, 0.071 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Shader" id=16]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color: hint_color = vec4(1.0); 
+uniform float flash_modifier: hint_range(0.0,1.0) = 1;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	color.rgb= mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=17]
+shader = SubResource( 16 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.0628, 61.5125 )
@@ -42,7 +123,7 @@ shader_param/vignette = ExtResource( 6 )
 [sub_resource type="ShaderMaterial" id=2]
 render_priority = 1
 shader = ExtResource( 8 )
-shader_param/blur_amount = 1.245
+shader_param/blur_amount = 0.579
 shader_param/vignette = ExtResource( 6 )
 
 [sub_resource type="Animation" id=7]
@@ -142,22 +223,6 @@ tracks/0/keys = {
 [sub_resource type="OccluderPolygon2D" id=13]
 polygon = PoolVector2Array( -10.4957, -4.00331, -5.36686, -4.08608, -5.57764, 4.02564, -11.1983, 4.60504 )
 
-[sub_resource type="Animation" id=14]
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Camera2D/Post Processing/Edge blur/damage vingette:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.15, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0.996078, 0.796078, 0.796078, 0 ), Color( 0.996078, 0.796078, 0.796078, 0.733333 ), Color( 0.996078, 0.796078, 0.796078, 0.733333 ), Color( 0.996078, 0.796078, 0.796078, 0 ) ]
-}
-
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 100.209, 63.8565 )
 
@@ -183,9 +248,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Effects" type="AnimationPlayer" parent="."]
+anims/Damage = SubResource( 14 )
+script = ExtResource( 12 )
+
 [node name="Player_sprite" type="Sprite" parent="."]
+material = SubResource( 17 )
 position = Vector2( -6.66367, -29.0271 )
 scale = Vector2( 0.33434, 0.33434 )
+z_index = 8
 texture = ExtResource( 2 )
 hframes = 5
 vframes = 6
@@ -205,7 +276,6 @@ layer = 13
 layer = 18
 
 [node name="Curve" type="Sprite" parent="Camera2D/Post Processing/Curve"]
-visible = false
 material = SubResource( 5 )
 position = Vector2( 578.198, 553.58 )
 scale = Vector2( 18.164, 17.397 )
@@ -215,7 +285,7 @@ texture = ExtResource( 7 )
 [node name="ui" type="Node2D" parent="Camera2D/Post Processing/Curve"]
 
 [node name="Health" type="CanvasLayer" parent="Camera2D/Post Processing/Curve/ui"]
-layer = 15
+layer = 21
 script = ExtResource( 16 )
 
 [node name="Health_Bar_2 (1)" type="Sprite" parent="Camera2D/Post Processing/Curve/ui/Health"]
@@ -252,7 +322,6 @@ texture = ExtResource( 14 )
 layer = 11
 
 [node name="chromatic abberation" type="Sprite" parent="Camera2D/Post Processing/chromatic abberation"]
-visible = false
 material = SubResource( 6 )
 position = Vector2( 573.341, 393.849 )
 scale = Vector2( 18.064, 12.329 )
@@ -263,7 +332,6 @@ texture = ExtResource( 7 )
 layer = 12
 
 [node name="Edge blur" type="Sprite" parent="Camera2D/Post Processing/Edge blur"]
-visible = false
 material = SubResource( 2 )
 position = Vector2( 573.916, 392.529 )
 scale = Vector2( 18.064, 12.329 )
@@ -271,7 +339,7 @@ z_index = 34
 texture = ExtResource( 7 )
 
 [node name="damage vingette" type="Sprite" parent="Camera2D/Post Processing/Edge blur"]
-modulate = Color( 0.996078, 0.796078, 0.796078, 0 )
+modulate = Color( 0.826528, 0.660438, 0.660438, 0.129412 )
 position = Vector2( 572.216, 323.186 )
 scale = Vector2( 0.601395, 0.601395 )
 z_index = -1
@@ -287,6 +355,10 @@ one_shot = true
 
 [node name="sound_dash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
+
+[node name="sound_damage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 17 )
+volume_db = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
@@ -307,6 +379,9 @@ z_index = -18
 texture = ExtResource( 3 )
 
 [node name="jump_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DamageTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="Attack_timer" type="Timer" parent="."]
@@ -335,10 +410,6 @@ range_layer_max = 8
 shadow_enabled = true
 shadow_gradient_length = 3.0
 
-[node name="Effects" type="AnimationPlayer" parent="."]
-anims/Damage = SubResource( 14 )
-script = ExtResource( 12 )
-
 [node name="Attack" type="Area2D" parent="."]
 
 [node name="Attack_collision" type="CollisionShape2D" parent="Attack"]
@@ -351,5 +422,6 @@ shape = SubResource( 15 )
 [connection signal="timeout" from="DashLag" to="." method="_on_DashLag_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="jump_timer" to="." method="_on_jump_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_Damage_timeout"]
 [connection signal="timeout" from="Attack_timer" to="." method="_on_Attack_timer_timeout"]
 [connection signal="timeout" from="Attack_timer2" to="." method="_on_Attack_timer2_timeout"]

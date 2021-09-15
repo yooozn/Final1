@@ -22,6 +22,7 @@ var gravity = 180.8
 var term_gravity = 100
 #Kinda self explainitory
 var can_move = true
+var can_beHit = true
 var is_jumping = false
 var is_grounded
 #The speed of the player dash
@@ -30,6 +31,7 @@ var jab_num = 1
 
 #Particles
 var jump_particles = preload("res://Characters/Player/Jump_particles.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -126,10 +128,14 @@ func attack():
 	can_move = false
 
 func damage(damage):
-	print(damage)
-	health -= 1
-	$Effects._damage()
-	health_update()
+	if can_beHit == true:
+		can_beHit = false
+		$DamageTimer.start(0.0)
+		$sound_damage.play(0.0)
+		print(damage)
+		health -= 1
+		$Effects._damage(self.position)
+		health_update()
 	pass
 
 func health_update():
@@ -198,3 +204,8 @@ func _on_jump_timer_timeout():
 	print('ended')
 	jump('down')
 	pass 
+
+
+func _on_Damage_timeout():
+	can_beHit = true
+	pass # Replace with function body.
