@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Characters/enemy/Event_trigger.gd" type="Script" id=1]
-[ext_resource path="res://Moss_Baby_Hurt-3.png" type="Texture" id=2]
+[ext_resource path="res://Moss_Baby_Walk-5.png" type="Texture" id=2]
+[ext_resource path="res://Moss_Baby_Walk-3.png" type="Texture" id=3]
+[ext_resource path="res://Moss_Baby_Walk-4.png" type="Texture" id=4]
+[ext_resource path="res://Moss_Baby_Walk-2.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.6451, 9.80361 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource( 1 )
@@ -14,9 +25,11 @@ modulate = Color( 1, 0.890196, 0, 1 )
 position = Vector2( -0.527283, -0.75 )
 shape = SubResource( 1 )
 
-[node name="Moss_Baby_Hurt-3" type="Sprite" parent="."]
-position = Vector2( -10.825, -15.1908 )
-scale = Vector2( 0.0870249, 0.108907 )
-texture = ExtResource( 2 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -8.77848, -15.1529 )
+scale = Vector2( 0.0837345, 0.101094 )
+frames = SubResource( 2 )
+frame = 2
+playing = true
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]

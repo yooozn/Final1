@@ -198,4 +198,3 @@ func _on_jump_timer_timeout():
 	print('ended')
 	jump('down')
 	pass 
-

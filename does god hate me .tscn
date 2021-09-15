@@ -269,10 +269,11 @@ environment = SubResource( 3 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
 [node name="Area2D" parent="." instance=ExtResource( 9 )]
-position = Vector2( -311.706, 233.386 )
-scale = Vector2( 3.27479, 2.76782 )
+position = Vector2( -334.895, 218.322 )
+scale = Vector2( 6.3743, 4.90707 )
 group = "Player"
 Event = "test()"
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+Damage = true
