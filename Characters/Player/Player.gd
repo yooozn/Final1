@@ -138,6 +138,8 @@ func health_update():
 	print('current health is ', health)
 	pass
 
+
+
 func dash():
 	partical_make(jump_particles, self.position + Vector2(0, 25))
 	$sound_dash.play(0.0)

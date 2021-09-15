@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Characters/Player/player2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Test_level.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Characters/light.png" type="Texture" id=12]
 [ext_resource path="res://Levels/Tileset/Tile_1.png" type="Texture" id=13]
 [ext_resource path="res://normal map test 2.png" type="Texture" id=14]
+[ext_resource path="res://Spawn_Bed-1.tscn" type="PackedScene" id=15]
 [ext_resource path="res://waterfal.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -51,6 +52,23 @@ glow_enabled = true
 glow_bloom = 0.42
 glow_hdr_threshold = 0.38
 adjustment_enabled = true
+
+[sub_resource type="Animation" id=4]
+resource_name = "Moss baby"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/moss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -154.986, 218.526 ), Vector2( -914.889, 224.472 ), Vector2( -154.986, 218.526 ) ]
+}
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 1, 0 )
@@ -271,8 +289,16 @@ stream = ExtResource( 7 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 
-[node name="Area2D" parent="." instance=ExtResource( 9 )]
-position = Vector2( -334.895, 218.322 )
+[node name="Spawn_Bed-1" parent="." instance=ExtResource( 15 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Moss baby"
+playback_speed = 0.3
+method_call_mode = 1
+"anims/Moss baby" = SubResource( 4 )
+
+[node name="moss" parent="AnimationPlayer" instance=ExtResource( 9 )]
+position = Vector2( -218.286, 219.021 )
 scale = Vector2( 6.3743, 4.90707 )
 group = "Player"
 Event = "test()"
