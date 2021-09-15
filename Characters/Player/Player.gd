@@ -58,7 +58,7 @@ func _process(delta):
 	elif vel.y < term_gravity and can_move == true:
 		
 		vel.y += gravity * delta
-	if vel.y > 0:
+	if vel.y > 10:
 		$AnimationPlayer.play("Fall")
 	if can_move == true:
 		vel.x = dir.x * speed
