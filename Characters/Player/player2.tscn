@@ -14,7 +14,7 @@
 [ext_resource path="res://Hearts.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30.0628, 61.5125 )
+extents = Vector2( 28.0739, 42.8849 )
 
 [sub_resource type="ShaderMaterial" id=2]
 render_priority = 1
@@ -165,7 +165,7 @@ vframes = 6
 frame = 13
 
 [node name="Playerhit" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -30.8677 )
+position = Vector2( -16, -13.8677 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -176,7 +176,7 @@ layer = 11
 
 [node name="Edge blur" type="Sprite" parent="Camera2D/Post Processing"]
 material = SubResource( 2 )
-position = Vector2( 2731.87, 523.032 )
+position = Vector2( 5113.12, -293.397 )
 scale = Vector2( 18.064, 12.329 )
 z_index = 34
 texture = ExtResource( 7 )
@@ -186,7 +186,7 @@ layer = 17
 
 [node name="Curve" type="Sprite" parent="Camera2D/Post Processing/Curve"]
 material = SubResource( 5 )
-position = Vector2( 2558.52, 735.385 )
+position = Vector2( 4939.77, -81.0439 )
 scale = Vector2( 18.164, 17.397 )
 z_index = 38
 texture = ExtResource( 7 )
@@ -234,7 +234,7 @@ anims/Walk = SubResource( 12 )
 layer = -3
 
 [node name="clouds" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 2649.74, 442.39 )
+position = Vector2( 5030.99, -374.039 )
 scale = Vector2( 0.588, 0.588 )
 z_index = -9
 texture = ExtResource( 3 )
