@@ -98,7 +98,7 @@ follow_viewport_enable = true
 follow_viewport_scale = 0.119
 
 [node name="Node2D" parent="Foilage/BG4" instance=ExtResource( 16 )]
-position = Vector2( -1548.5, -1306.64 )
+position = Vector2( -1545.85, -1305.05 )
 scale = Vector2( 10.8245, 10.8245 )
 
 [node name="BG5" type="CanvasLayer" parent="Foilage"]
@@ -269,7 +269,8 @@ environment = SubResource( 3 )
 stream = ExtResource( 7 )
 
 [node name="Area2D" parent="." instance=ExtResource( 9 )]
-position = Vector2( -256.976, 223.994 )
+position = Vector2( -311.706, 233.386 )
+scale = Vector2( 3.27479, 2.76782 )
 group = "Player"
 Event = "test()"
 
