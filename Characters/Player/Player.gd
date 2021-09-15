@@ -26,7 +26,7 @@ var can_beHit = true
 var is_jumping = false
 var is_grounded
 #The speed of the player dash
-var dash_speed = 400
+var dash_speed = 200
 var jab_num = 1
 
 #Particles
@@ -45,6 +45,7 @@ func _process(delta):
 		emit_signal("grounded_updated", is_grounded)
 	
 	if is_grounded == true:
+		
 			#make a fucking state machine you fat fucking bastard
 		if $AnimationPlayer.current_animation != 'Punch' or $AnimationPlayer.current_animation != 'Punch2':
 			if dir.x == 0:
@@ -54,9 +55,13 @@ func _process(delta):
 #			dir.x = 0
 		
 		vel.y -= gravity * 0.01
-	elif vel.y < term_gravity:
+	elif vel.y < term_gravity and can_move == true:
+		
 		vel.y += gravity * delta
-	vel.x = dir.x * speed
+	if vel.y > 0:
+		$AnimationPlayer.play("Fall")
+	if can_move == true:
+		vel.x = dir.x * speed
 	input_stuff()
 	move_and_slide(vel * 10, Vector2(0, -1))
 
@@ -152,7 +157,7 @@ func dash():
 	print("dash")
 	$Dash.start()
 	can_move = false
-	vel.y = 0
+	vel.y = -12.0
 	if $Player_sprite.flip_h == true:
 		vel.x = -dash_speed
 	else:

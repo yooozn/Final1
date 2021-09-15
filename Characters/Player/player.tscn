@@ -5,7 +5,6 @@
 [ext_resource path="res://Characters/Player/Dash.mp3" type="AudioStream" id=3]
 [ext_resource path="res://Characters/clouds.png" type="Texture" id=4]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.0628, 61.5125 )
 
@@ -42,7 +41,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1, 0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "Jump"
 loop = true
 tracks/0/type = "value"
@@ -58,8 +57,7 @@ tracks/0/keys = {
 "values": [ 5, 7 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Punch"
+[sub_resource type="Animation" id=5]
 step = 0.025
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -74,8 +72,7 @@ tracks/0/keys = {
 "values": [ 9, 9, 10, 11, 12 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Walk"
+[sub_resource type="Animation" id=6]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -124,9 +121,9 @@ stream = ExtResource( 3 )
 autoplay = "Idle"
 anims/Dash = SubResource( 2 )
 anims/Idle = SubResource( 3 )
-anims/Jump = SubResource( 6 )
-anims/Punch = SubResource( 4 )
-anims/Walk = SubResource( 5 )
+anims/Jump = SubResource( 4 )
+anims/Punch = SubResource( 5 )
+anims/Walk = SubResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
