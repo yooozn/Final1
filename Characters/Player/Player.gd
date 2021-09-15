@@ -159,7 +159,7 @@ func _on_Dash_timeout():
 	vel.x = dir.x * speed
 	vel.y += gravity * 0.1
 	$DashLag.start()
-	pass # Replace with function body.
+	pass 
 
 
 
@@ -167,7 +167,7 @@ func _on_Dash_timeout():
 func _on_DashLag_timeout():
 	print('dashlag')
 	can_move = true
-	pass # Replace with function body.
+	pass 
 
 
 
@@ -183,15 +183,14 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_Attack_timer_timeout():
 	$Attack_timer2.start()
-	pass # Replace with function body.
-
+	pass 
 
 func _on_Attack_timer2_timeout():
 	jab_num = 1
-	pass # Replace with function body.
+	pass 
 
 
 func _on_jump_timer_timeout():
 	print('ended')
 	jump('down')
-	pass # Replace with function body.
+	pass 

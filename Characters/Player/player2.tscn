@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/New/Orbis Animations/ghost/this one will work/spritesheet (1).png" type="Texture" id=2]
@@ -38,7 +38,7 @@ shader_param/vignette = SubResource( 4 )
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 10 )
-shader_param/amount = 0.006
+shader_param/amount = 0.004
 shader_param/blur_amount = 0.0
 shader_param/vignette = ExtResource( 6 )
 
@@ -136,11 +136,10 @@ tracks/0/keys = {
 "values": [ 26, 28 ]
 }
 
-[sub_resource type="OccluderPolygon2D" id=14]
+[sub_resource type="OccluderPolygon2D" id=13]
 polygon = PoolVector2Array( -10.4957, -4.00331, -5.36686, -4.08608, -5.57764, 4.02564, -11.1983, 4.60504 )
 
-[sub_resource type="Animation" id=13]
-resource_name = "Damage"
+[sub_resource type="Animation" id=14]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -155,6 +154,9 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 0.996078, 0.796078, 0.796078, 0 ), Color( 0.996078, 0.796078, 0.796078, 0.733333 ), Color( 0.996078, 0.796078, 0.796078, 0.733333 ), Color( 0.996078, 0.796078, 0.796078, 0 ) ]
 }
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 100.209, 63.8565 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -216,6 +218,7 @@ texture = ExtResource( 7 )
 layer = 11
 
 [node name="chromatic abberation" type="Sprite" parent="Camera2D/Post Processing/chromatic abberation"]
+visible = false
 material = SubResource( 6 )
 position = Vector2( 575.123, 392.067 )
 scale = Vector2( 18.064, 12.329 )
@@ -224,13 +227,6 @@ texture = ExtResource( 7 )
 
 [node name="chromatic abberation2" type="CanvasLayer" parent="Camera2D/Post Processing"]
 layer = 12
-
-[node name="chromatic abberation" type="Sprite" parent="Camera2D/Post Processing/chromatic abberation2"]
-material = SubResource( 6 )
-position = Vector2( 581.123, 388.067 )
-scale = Vector2( 18.064, 12.329 )
-z_index = 38
-texture = ExtResource( 7 )
 
 [node name="damage vingette" type="Sprite" parent="Camera2D/Post Processing/chromatic abberation2"]
 modulate = Color( 0.996078, 0.796078, 0.796078, 0 )
@@ -282,7 +278,7 @@ position = Vector2( -14.1581, 28.7882 )
 visible = false
 position = Vector2( 89.1344, -12.539 )
 scale = Vector2( 12.6804, 10.7632 )
-occluder = SubResource( 14 )
+occluder = SubResource( 13 )
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false
@@ -298,8 +294,14 @@ shadow_enabled = true
 shadow_gradient_length = 3.0
 
 [node name="Effects" type="AnimationPlayer" parent="."]
-anims/Damage = SubResource( 13 )
+anims/Damage = SubResource( 14 )
 script = ExtResource( 12 )
+
+[node name="Attack" type="Area2D" parent="."]
+
+[node name="Attack_collision" type="CollisionShape2D" parent="Attack"]
+position = Vector2( 0, -30.8677 )
+shape = SubResource( 15 )
 
 [connection signal="grounded_updated" from="." to="Camera2D2" method="_on_Player_grounded_updated"]
 [connection signal="timeout" from="Dash" to="." method="_on_Dash_timeout"]
