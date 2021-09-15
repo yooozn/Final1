@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal grounded_updated(is_grounded)
+signal health_update(health_)
 
 #Direction of input from keyboard 
 var dir = Vector2()
@@ -125,12 +126,15 @@ func attack():
 	can_move = false
 
 func damage(damage):
-	health -= damage
+	print(damage)
+	health -= 1
 	$Effects._damage()
 	health_update()
 	pass
 
 func health_update():
+	$"Camera2D/Post Processing/Curve/ui/Health/"._on_Player_health_update(health)
+	emit_signal("health_updated", health)
 	print('current health is ', health)
 	pass
 
@@ -195,4 +199,3 @@ func _on_jump_timer_timeout():
 	jump('down')
 	pass 
 
-func health 

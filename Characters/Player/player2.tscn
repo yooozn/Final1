@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/New/Orbis Animations/ghost/this one will work/spritesheet (1).png" type="Texture" id=2]
@@ -15,15 +15,10 @@
 [ext_resource path="res://Characters/Player/damage vingette.png" type="Texture" id=13]
 [ext_resource path="res://Health_Bar_1_(fixed) (1).png" type="Texture" id=14]
 [ext_resource path="res://Health_Bar_2 (1).png" type="Texture" id=15]
+[ext_resource path="res://Characters/Player/Health.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.0628, 61.5125 )
-
-[sub_resource type="ShaderMaterial" id=2]
-render_priority = 1
-shader = ExtResource( 8 )
-shader_param/blur_amount = 1.245
-shader_param/vignette = ExtResource( 6 )
 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, -5.01433, 0, 0, Vector2( 0.480263, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 5.20741, 0.0, 0, 0 ]
@@ -42,6 +37,12 @@ shader_param/vignette = SubResource( 4 )
 shader = ExtResource( 10 )
 shader_param/amount = 0.004
 shader_param/blur_amount = 0.0
+shader_param/vignette = ExtResource( 6 )
+
+[sub_resource type="ShaderMaterial" id=2]
+render_priority = 1
+shader = ExtResource( 8 )
+shader_param/blur_amount = 1.245
 shader_param/vignette = ExtResource( 6 )
 
 [sub_resource type="Animation" id=7]
@@ -145,7 +146,7 @@ polygon = PoolVector2Array( -10.4957, -4.00331, -5.36686, -4.08608, -5.57764, 4.
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Camera2D/Post Processing/chromatic abberation2/damage vingette:modulate")
+tracks/0/path = NodePath("Camera2D/Post Processing/Edge blur/damage vingette:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -162,6 +163,7 @@ extents = Vector2( 100.209, 63.8565 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+health = 5
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 position = Vector2( 3.02722, -23.3755 )
@@ -189,11 +191,6 @@ hframes = 5
 vframes = 6
 frame = 13
 
-[node name="Health_Bar_2 (1)" type="Sprite" parent="Player_sprite"]
-position = Vector2( -1783.7, -467.457 )
-scale = Vector2( 0.75837, 1 )
-texture = ExtResource( 15 )
-
 [node name="World_collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -30.8677 )
 shape = SubResource( 1 )
@@ -204,13 +201,6 @@ zoom = Vector2( 1.5, 1.5 )
 [node name="Post Processing" type="CanvasLayer" parent="Camera2D"]
 layer = 13
 
-[node name="Edge blur" type="Sprite" parent="Camera2D/Post Processing"]
-material = SubResource( 2 )
-position = Vector2( 12851.2, -299.066 )
-scale = Vector2( 18.064, 12.329 )
-z_index = 34
-texture = ExtResource( 7 )
-
 [node name="Curve" type="CanvasLayer" parent="Camera2D/Post Processing"]
 layer = 18
 
@@ -220,6 +210,41 @@ position = Vector2( 12717.1, 234.106 )
 scale = Vector2( 18.164, 17.397 )
 z_index = 38
 texture = ExtResource( 7 )
+
+[node name="ui" type="Node2D" parent="Camera2D/Post Processing/Curve"]
+
+[node name="Health" type="CanvasLayer" parent="Camera2D/Post Processing/Curve/ui"]
+script = ExtResource( 16 )
+
+[node name="Health_Bar_2 (1)" type="Sprite" parent="Camera2D/Post Processing/Curve/ui/Health"]
+position = Vector2( 205.916, 178.932 )
+scale = Vector2( 0.253553, 0.33434 )
+texture = ExtResource( 15 )
+
+[node name="1" type="Sprite" parent="Camera2D/Post Processing/Curve/ui/Health"]
+position = Vector2( 77.3043, 71.695 )
+scale = Vector2( 0.0577467, 0.0597551 )
+texture = ExtResource( 14 )
+
+[node name="2" type="Sprite" parent="Camera2D/Post Processing/Curve/ui/Health"]
+position = Vector2( 136.304, 71.695 )
+scale = Vector2( 0.0577467, 0.0597551 )
+texture = ExtResource( 14 )
+
+[node name="3" type="Sprite" parent="Camera2D/Post Processing/Curve/ui/Health"]
+position = Vector2( 195.304, 71.695 )
+scale = Vector2( 0.0577467, 0.0597551 )
+texture = ExtResource( 14 )
+
+[node name="4" type="Sprite" parent="Camera2D/Post Processing/Curve/ui/Health"]
+position = Vector2( 254.304, 71.695 )
+scale = Vector2( 0.0577467, 0.0597551 )
+texture = ExtResource( 14 )
+
+[node name="5" type="Sprite" parent="Camera2D/Post Processing/Curve/ui/Health"]
+position = Vector2( 313.304, 71.695 )
+scale = Vector2( 0.0577467, 0.0597551 )
+texture = ExtResource( 14 )
 
 [node name="chromatic abberation" type="CanvasLayer" parent="Camera2D/Post Processing"]
 layer = 11
@@ -232,10 +257,17 @@ scale = Vector2( 18.064, 12.329 )
 z_index = 38
 texture = ExtResource( 7 )
 
-[node name="chromatic abberation2" type="CanvasLayer" parent="Camera2D/Post Processing"]
+[node name="Edge blur" type="CanvasLayer" parent="Camera2D/Post Processing"]
 layer = 12
 
-[node name="damage vingette" type="Sprite" parent="Camera2D/Post Processing/chromatic abberation2"]
+[node name="Edge blur" type="Sprite" parent="Camera2D/Post Processing/Edge blur"]
+material = SubResource( 2 )
+position = Vector2( 12851.2, -299.066 )
+scale = Vector2( 18.064, 12.329 )
+z_index = 34
+texture = ExtResource( 7 )
+
+[node name="damage vingette" type="Sprite" parent="Camera2D/Post Processing/Edge blur"]
 modulate = Color( 0.996078, 0.796078, 0.796078, 0 )
 position = Vector2( 12804.9, -12.6618 )
 scale = Vector2( 0.601395, 0.601395 )
@@ -310,32 +342,8 @@ script = ExtResource( 12 )
 position = Vector2( 0, -30.8677 )
 shape = SubResource( 15 )
 
-[node name="Health_Bar_1_(fixed) (1)" type="Sprite" parent="."]
-position = Vector2( -731.638, -292.554 )
-scale = Vector2( 0.0577467, 0.0597551 )
-texture = ExtResource( 14 )
-
-[node name="Health_Bar_1_(fixed) (1)2" type="Sprite" parent="."]
-position = Vector2( -672.638, -292.554 )
-scale = Vector2( 0.0577467, 0.0597551 )
-texture = ExtResource( 14 )
-
-[node name="Health_Bar_1_(fixed) (1)3" type="Sprite" parent="."]
-position = Vector2( -613.638, -292.554 )
-scale = Vector2( 0.0577467, 0.0597551 )
-texture = ExtResource( 14 )
-
-[node name="Health_Bar_1_(fixed) (1)4" type="Sprite" parent="."]
-position = Vector2( -554.638, -292.554 )
-scale = Vector2( 0.0577467, 0.0597551 )
-texture = ExtResource( 14 )
-
-[node name="Health_Bar_1_(fixed) (1)5" type="Sprite" parent="."]
-position = Vector2( -495.638, -292.554 )
-scale = Vector2( 0.0577467, 0.0597551 )
-texture = ExtResource( 14 )
-
 [connection signal="grounded_updated" from="." to="Camera2D2" method="_on_Player_grounded_updated"]
+[connection signal="health_update" from="." to="Camera2D/Post Processing/Curve/ui/Health" method="_on_Player_health_update"]
 [connection signal="timeout" from="Dash" to="." method="_on_Dash_timeout"]
 [connection signal="timeout" from="DashLag" to="." method="_on_DashLag_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
