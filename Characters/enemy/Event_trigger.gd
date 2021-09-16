@@ -5,7 +5,7 @@ export var Event = 'Null'
 export var Turn = false
 export var Jump = false
 export var Damage = false
-
+var health = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -16,12 +16,27 @@ func _ready():
 #	pass
 
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(Area2D):
 	
-	if body.is_in_group(group):
-		if Damage == true:
-			body.damage(1)
-		if Damage == false:
-			body.damage(-1)
-	print(body)
+#	if body.is_in_group(group):
+#		if Damage == true:
+#			body.damage(1)
+#		if Damage == false:
+#			body.damage(-1)
+#	print(body)
+
+	if Area2D.is_in_group(group):
+		Area2D.damage(1)
+	print('enemy')
 	pass # Replace with function body.
+
+func damage(damage):
+	print(damage)
+	health -= 1
+	if health == 0: 
+		$AnimatedSprite.queue_free()
+	$Effects._damage()
+	pass
+
+
+
