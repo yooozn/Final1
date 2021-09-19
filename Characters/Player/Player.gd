@@ -231,3 +231,27 @@ func _on_Damage_timeout():
 func _on_Dash_invun_timeout():
 	can_beHit = true
 	pass # Replace with function body.
+
+
+func _on_Attack_body_shape_entered(body_id, body, body_shape, local_shape):
+	if body.is_in_group('Enemy'):
+		print('collision')
+	print(body)
+	pass # Replace with function body.
+
+
+func _on_Attack_area_entered(area):
+	if area.is_in_group('Enemy'):
+		print('collision')
+		area.damage(1)
+	print(area)
+	
+	pass
+
+func set_limit(left, right, top, bottom):
+	$Camera2D.limit_top = top
+	$Camera2D.limit_bottom = bottom
+	$Camera2D.limit_left = left
+	$Camera2D.limit_right = right
+	
+	pass
