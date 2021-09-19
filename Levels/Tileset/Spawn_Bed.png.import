@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Spawn_Bed-1.png-f90629f1d346c51f27331e10e74f978a.stex"
+path="res://.import/Spawn_Bed.png-d5b670d55d2124d8888a3079e0960e15.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Tileset/trees/Spawn_Bed-1.png"
-dest_files=[ "res://.import/Spawn_Bed-1.png-f90629f1d346c51f27331e10e74f978a.stex" ]
+source_file="res://Levels/Tileset/Spawn_Bed.png"
+dest_files=[ "res://.import/Spawn_Bed.png-d5b670d55d2124d8888a3079e0960e15.stex" ]
 
 [params]
 
