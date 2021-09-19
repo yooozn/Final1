@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Characters/enemy/Event_trigger.gd" type="Script" id=1]
 [ext_resource path="res://Moss_Baby_Walk-5.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Moss_Baby_Walk-4.png" type="Texture" id=4]
 [ext_resource path="res://Moss_Baby_Walk-2.png" type="Texture" id=5]
 [ext_resource path="res://player2.gdshader" type="Shader" id=6]
+[ext_resource path="res://Characters/Player/Effects.gd" type="Script" id=7]
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 6 )
@@ -49,9 +50,11 @@ material = SubResource( 4 )
 position = Vector2( -8.77848, -15.1529 )
 scale = Vector2( 0.0837345, 0.101094 )
 frames = SubResource( 2 )
+frame = 3
 playing = true
 
 [node name="Enemy_effects" type="AnimationPlayer" parent="."]
 anims/Stagger = SubResource( 3 )
+script = ExtResource( 7 )
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
