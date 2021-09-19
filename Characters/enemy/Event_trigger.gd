@@ -5,7 +5,7 @@ export var Event = 'Null'
 export var Turn = false
 export var Jump = false
 export var Damage = false
-var health = 1
+var health = 2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -34,8 +34,8 @@ func damage(damage):
 	print(damage)
 	health -= 1
 	if health == 0: 
-		$AnimatedSprite.queue_free()
-	$Effects._damage()
+		queue_free()
+#	$Effects._damage()
 	pass
 
 
