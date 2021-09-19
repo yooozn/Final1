@@ -17,101 +17,7 @@
 [ext_resource path="res://Health_Bar_2 (1).png" type="Texture" id=15]
 [ext_resource path="res://Characters/Player/Health.gd" type="Script" id=16]
 [ext_resource path="res://hit_placerholder.mp3" type="AudioStream" id=17]
-
-[sub_resource type="Animation" id=1]
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Camera2D/Post Processing/Edge blur/damage vingette:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0.996078, 0.796078, 0.796078, 0 ), Color( 0.0352941, 0.027451, 0.027451, 0.733333 ), Color( 0.996078, 0.796078, 0.796078, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Player_sprite:material:shader_param/flash_modifier")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0, 0.0, 1.0, 0.0, 0.8, 0.0, 0.7, 0.0, 0.422, 0.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Camera2D/Post Processing/chromatic abberation/chromatic abberation:material:shader_param/amount")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.05, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.004, 0.037, 0.004 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Camera2D/Post Processing/Curve/Curve:material:shader_param/zoom")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.05, 0.4, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 1.0, 0.893, 1.0, 1.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Camera2D/Post Processing/Curve/Curve:material:shader_param/tiled_factor")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.05, 0.4, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0.052, 0.071 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Camera2D/Post Processing/Edge blur/Edge blur:material:shader_param/blur_amount")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = false
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.05, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.579, 0.0, 0.579 ]
-}
-
-[sub_resource type="Shader" id=2]
-code = "shader_type canvas_item;
-
-uniform vec4 flash_color: hint_color = vec4(1.0); 
-uniform float flash_modifier: hint_range(0.0,1.0) = 1;
-
-void fragment() {
-	vec4 color = texture(TEXTURE, UV);
-	color.rgb= mix(color.rgb, flash_color.rgb, flash_modifier);
-	COLOR = color;
-}"
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
-shader_param/flash_color = Color( 1, 1, 1, 1 )
-shader_param/flash_modifier = 0.0
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 30.0628, 61.5125 )
+[ext_resource path="res://player2.gdshader" type="Shader" id=18]
 
 [sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, -5.01433, 0, 0, Vector2( 0.480263, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 5.20741, 0.0, 0, 0 ]
@@ -137,6 +43,89 @@ render_priority = 1
 shader = ExtResource( 8 )
 shader_param/blur_amount = 0.579
 shader_param/vignette = ExtResource( 6 )
+
+[sub_resource type="Animation" id=1]
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D/Post Processing/Edge blur/damage vingette:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.95 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.996078, 0.796078, 0.796078, 0 ), Color( 0.0352941, 0.027451, 0.027451, 0.733333 ), Color( 0.996078, 0.796078, 0.796078, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D/Post Processing/Edge blur/Edge blur:material:shader_param/blur_amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.579, 0.0, 0.579 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera2D/Post Processing/Curve/Curve:material:shader_param/tiled_factor")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.052, 0.071 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera2D/Post Processing/Curve/Curve:material:shader_param/zoom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.893, 1.0, 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Camera2D/Post Processing/chromatic abberation/chromatic abberation:material:shader_param/amount")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.004, 0.037, 0.004 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Camera2D/Post Processing/Edge blur/Edge blur:material:shader_param/blur_amount")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.05, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.579, 0.0, 0.579 ]
+}
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 18 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 30.0628, 61.5125 )
 
 [sub_resource type="Animation" id=10]
 length = 0.5
@@ -282,7 +271,7 @@ extents = Vector2( 118.701, 81.8657 )
 script = ExtResource( 1 )
 health = 5
 
-[node name="Camera2D2" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 3.02722, -23.3755 )
 current = true
 zoom = Vector2( 1.5, 1.5 )
@@ -291,35 +280,14 @@ smoothing_enabled = true
 drag_margin_top = 0.75
 script = ExtResource( 4 )
 
-[node name="Tween" type="Tween" parent="Camera2D2"]
+[node name="Tween" type="Tween" parent="Camera2D"]
 
-[node name="ViewportContainer" type="ViewportContainer" parent="Camera2D2"]
+[node name="ViewportContainer" type="ViewportContainer" parent="Camera2D"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Effects" type="AnimationPlayer" parent="."]
-anims/Damage = SubResource( 1 )
-script = ExtResource( 12 )
-
-[node name="Player_sprite" type="Sprite" parent="."]
-material = SubResource( 3 )
-position = Vector2( -6.66367, -29.0271 )
-scale = Vector2( 0.33434, 0.33434 )
-z_index = 8
-texture = ExtResource( 2 )
-hframes = 5
-vframes = 6
-frame = 10
-
-[node name="World_collision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -30.8677 )
-shape = SubResource( 4 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2( 1.5, 1.5 )
 
 [node name="Post Processing" type="CanvasLayer" parent="Camera2D"]
 layer = 13
@@ -400,6 +368,24 @@ scale = Vector2( 0.601395, 0.601395 )
 z_index = -1
 texture = ExtResource( 13 )
 
+[node name="Effects" type="AnimationPlayer" parent="."]
+anims/Damage = SubResource( 1 )
+script = ExtResource( 12 )
+
+[node name="Player_sprite" type="Sprite" parent="."]
+material = SubResource( 3 )
+position = Vector2( -6.66367, -29.0271 )
+scale = Vector2( 0.33434, 0.33434 )
+z_index = 8
+texture = ExtResource( 2 )
+hframes = 5
+vframes = 6
+frame = 23
+
+[node name="World_collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -30.8677 )
+shape = SubResource( 4 )
+
 [node name="Dash" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
@@ -478,7 +464,7 @@ collision_mask = 2
 position = Vector2( 0, -30.8677 )
 shape = SubResource( 18 )
 
-[connection signal="grounded_updated" from="." to="Camera2D2" method="_on_Player_grounded_updated"]
+[connection signal="grounded_updated" from="." to="Camera2D" method="_on_Player_grounded_updated"]
 [connection signal="health_update" from="." to="Camera2D/Post Processing/Curve/ui/Health" method="_on_Player_health_update"]
 [connection signal="timeout" from="Dash" to="." method="_on_Dash_timeout"]
 [connection signal="timeout" from="Dash_invun" to="." method="_on_Dash_invun_timeout"]

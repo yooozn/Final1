@@ -247,3 +247,11 @@ func _on_Attack_area_entered(area):
 	print(area)
 	
 	pass
+
+func set_limit(left, right, top, bottom):
+	$Camera2D.limit_top = top
+	$Camera2D.limit_bottom = bottom
+	$Camera2D.limit_left = left
+	$Camera2D.limit_right = right
+	
+	pass

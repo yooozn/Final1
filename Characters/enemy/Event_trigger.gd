@@ -31,10 +31,12 @@ func _on_Area2D_body_entered(Area2D):
 	pass # Replace with function body.
 
 func damage(damage):
+	
 	print(damage)
 	health -= 1
 	if health == 0: 
 		queue_free()
+	$Enemy_effects.play("Stagger")
 #	$Effects._damage()
 	pass
 
