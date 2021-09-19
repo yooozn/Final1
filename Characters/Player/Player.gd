@@ -22,39 +22,47 @@ var gravity = 180.8
 var term_gravity = 100
 #Kinda self explainitory
 var can_move = true
+var can_interupt = true
+var can_beHit = true
 var is_jumping = false
 var is_grounded
 #The speed of the player dash
-var dash_speed = 400
+var dash_speed = 200
 var jab_num = 1
 
 #Particles
 var jump_particles = preload("res://Characters/Player/Jump_particles.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
+	
 	var was_grounded = is_grounded
 	is_grounded = is_on_floor()
-	
 	if was_grounded == null || is_grounded != was_grounded:
 		emit_signal("grounded_updated", is_grounded)
 	
 	if is_grounded == true:
+		
 			#make a fucking state machine you fat fucking bastard
-		if $AnimationPlayer.current_animation != 'Punch' or $AnimationPlayer.current_animation != 'Punch2':
+		if can_interupt == true:
 			if dir.x == 0:
 				if can_move == true:
 					$AnimationPlayer.play("Idle")
 #		else:
 #			dir.x = 0
 		
-		vel.y -= gravity * 0.01
-	elif vel.y < term_gravity:
+		vel.y = gravity * 0.01
+	elif vel.y < term_gravity and can_move == true:
+		
 		vel.y += gravity * delta
-	vel.x = dir.x * speed
+	if vel.y > 10 and can_interupt == true:
+		$AnimationPlayer.play("Fall")
+	if can_move == true:
+		vel.x = dir.x * speed
 	input_stuff()
 	move_and_slide(vel * 10, Vector2(0, -1))
 
@@ -64,7 +72,7 @@ func input_stuff():
 	if Input.is_action_pressed("ui_left"):
 		$Player_sprite.flip_h = true
 		dir.x = -1.0
-		if can_move == true:
+		if can_move == true and can_interupt == true:
 			if is_on_floor():
 				$AnimationPlayer.play("Walk")
 				
@@ -73,7 +81,7 @@ func input_stuff():
 	elif Input.is_action_pressed("ui_right"):
 		$Player_sprite.flip_h = false
 		dir.x = 1.0
-		if can_move == true:
+		if can_move == true and can_interupt == true:
 			if is_on_floor():
 				$AnimationPlayer.play("Walk")
 	if Input.is_action_just_pressed("jump"):
@@ -98,6 +106,8 @@ func jump(state):
 	#		$AnimationPlayer.stop(true)
 			$AnimationPlayer.play("Jump")
 			print($AnimationPlayer.playback_active)
+		else: 
+			print(self.is_on_floor())
 		if self.is_on_wall():
 			partical_make(jump_particles, self.position + Vector2(0, 25))
 			$jump_timer.start(jump_time)
@@ -113,23 +123,28 @@ func jump(state):
 			if not Input.is_action_pressed("jump"):
 				vel.y = 0
 func attack():
-	$AnimationPlayer.stop(true)
-#	$AnimationPlayer.play("Punch")
-	print(jab_num)
-	if jab_num == 1:
-		$AnimationPlayer.play("Punch")
+	if can_interupt == true:
+		$AnimationPlayer.stop(true)
+	#	$AnimationPlayer.play("Punch")
+		print(jab_num)
+		if jab_num == 1:
+			$AnimationPlayer.play("Punch")
+			$Attack_timer.start()
+			jab_num += 1
+		elif jab_num == 2:
+			$AnimationPlayer.play("Punch2")
 		$Attack_timer.start()
-		jab_num += 1
-	if jab_num == 2:
-		$AnimationPlayer.play("Punch")
-		$Attack_timer.start()
-	can_move = false
+	can_interupt = false
 
 func damage(damage):
-	print(damage)
-	health -= 1
-	$Effects._damage()
-	health_update()
+	if can_beHit == true:
+		can_beHit = false
+		$DamageTimer.start(0.0)
+		$sound_damage.play(0.0)
+		print(damage)
+		health -= damage
+		$Effects._damage(self.position)
+		health_update()
 	pass
 
 func health_update():
@@ -141,6 +156,8 @@ func health_update():
 
 
 func dash():
+	$Dash_invun.start()
+	can_beHit = false
 	partical_make(jump_particles, self.position + Vector2(0, 25))
 	$sound_dash.play(0.0)
 	$AnimationPlayer.stop(true)
@@ -148,7 +165,7 @@ func dash():
 	print("dash")
 	$Dash.start()
 	can_move = false
-	vel.y = 0
+	vel.y = -12.0
 	if $Player_sprite.flip_h == true:
 		vel.x = -dash_speed
 	else:
@@ -183,12 +200,16 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	else:
 		$AnimationPlayer.play("Jump")
 	if anim_name == ('Punch'):
-		can_move = true
+		can_interupt = true
+	if anim_name == ('Punch2'):
+		jab_num = 1
+		can_interupt = true
 	pass # Replace with function body.
 
 
 func _on_Attack_timer_timeout():
 	$Attack_timer2.start()
+	can_interupt = true
 	pass 
 
 func _on_Attack_timer2_timeout():
@@ -200,3 +221,13 @@ func _on_jump_timer_timeout():
 	print('ended')
 	jump('down')
 	pass 
+
+
+func _on_Damage_timeout():
+	can_beHit = true
+	pass # Replace with function body.
+
+
+func _on_Dash_invun_timeout():
+	can_beHit = true
+	pass # Replace with function body.
