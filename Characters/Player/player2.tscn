@@ -304,6 +304,7 @@ layer = 13
 layer = 18
 
 [node name="Curve" type="Sprite" parent="Camera2D/Post Processing/Curve"]
+visible = false
 material = SubResource( 7 )
 position = Vector2( 578.198, 553.58 )
 scale = Vector2( 18.164, 17.397 )
@@ -350,6 +351,7 @@ texture = ExtResource( 14 )
 layer = 11
 
 [node name="chromatic abberation" type="Sprite" parent="Camera2D/Post Processing/chromatic abberation"]
+visible = false
 material = SubResource( 8 )
 position = Vector2( 573.341, 393.849 )
 scale = Vector2( 18.064, 12.329 )
@@ -360,6 +362,7 @@ texture = ExtResource( 7 )
 layer = 12
 
 [node name="Edge blur" type="Sprite" parent="Camera2D/Post Processing/Edge blur"]
+visible = false
 material = SubResource( 9 )
 position = Vector2( 573.916, 392.529 )
 scale = Vector2( 18.064, 12.329 )
