@@ -300,22 +300,11 @@ method_call_mode = 1
 "anims/Moss baby" = SubResource( 4 )
 
 [node name="moss" parent="AnimationPlayer" instance=ExtResource( 9 )]
-position = Vector2( -218.286, 219.021 )
+position = Vector2( -895.825, 224.323 )
 scale = Vector2( 6.3743, 4.90707 )
 group = "Player"
 Event = "test()"
 Damage = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Area2D"]
-margin_left = -10.6275
-margin_top = -16.8621
-margin_right = 53.3725
-margin_bottom = 15.1379
-rect_scale = Vector2( 0.238591, 0.238591 )
-text = "Damage"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Area2D2" parent="." instance=ExtResource( 9 )]
 position = Vector2( -129.359, 207.727 )

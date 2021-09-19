@@ -17,8 +17,8 @@ func _ready():
 
 
 func _on_Area2D_body_entered(Area2D):
-	
 #	if body.is_in_group(group):
+	
 #		if Damage == true:
 #			body.damage(1)
 #		if Damage == false:
