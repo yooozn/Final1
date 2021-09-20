@@ -274,7 +274,7 @@ health = 5
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 3.02722, -23.3755 )
 current = true
-zoom = Vector2( 3, 3 )
+zoom = Vector2( 1.5, 1.5 )
 drag_margin_h_enabled = true
 smoothing_enabled = true
 drag_margin_top = 0.75
@@ -298,7 +298,7 @@ layer = 18
 [node name="Curve" type="Sprite" parent="Camera2D/Post Processing/Curve"]
 visible = false
 material = SubResource( 7 )
-position = Vector2( 3633.91, 934.364 )
+position = Vector2( 578.198, 553.58 )
 scale = Vector2( 18.164, 17.397 )
 z_index = 38
 texture = ExtResource( 7 )
@@ -345,7 +345,7 @@ layer = 11
 [node name="chromatic abberation" type="Sprite" parent="Camera2D/Post Processing/chromatic abberation"]
 visible = false
 material = SubResource( 8 )
-position = Vector2( 3767.52, 824.984 )
+position = Vector2( 573.341, 393.849 )
 scale = Vector2( 18.064, 12.329 )
 z_index = 38
 texture = ExtResource( 7 )
@@ -356,14 +356,14 @@ layer = 12
 [node name="Edge blur" type="Sprite" parent="Camera2D/Post Processing/Edge blur"]
 visible = false
 material = SubResource( 9 )
-position = Vector2( 3390.46, 339.03 )
+position = Vector2( 573.916, 392.529 )
 scale = Vector2( 18.064, 12.329 )
 z_index = 36
 texture = ExtResource( 7 )
 
 [node name="damage vingette" type="Sprite" parent="Camera2D/Post Processing/Edge blur"]
 modulate = Color( 0.996078, 0.796078, 0.796078, 0 )
-position = Vector2( 3763.25, 370.391 )
+position = Vector2( 572.216, 323.186 )
 scale = Vector2( 0.601395, 0.601395 )
 z_index = -1
 texture = ExtResource( 13 )
@@ -418,8 +418,8 @@ anims/Walk = SubResource( 16 )
 layer = -3
 
 [node name="BG" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 167.55, 108.043 )
-scale = Vector2( 0.871767, 0.682589 )
+position = Vector2( 628.502, 475.297 )
+scale = Vector2( 0.588, 0.588 )
 z_index = -18
 texture = ExtResource( 3 )
 
