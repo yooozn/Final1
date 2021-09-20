@@ -29,7 +29,7 @@ var is_grounded
 #The speed of the player dash
 var dash_speed = 200
 var jab_num = 1
-
+var jab_connected = false
 #Particles
 var jump_particles = preload("res://Characters/Player/Jump_particles.tscn")
 
@@ -39,7 +39,6 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	
 	var was_grounded = is_grounded
 	is_grounded = is_on_floor()
 	if was_grounded == null || is_grounded != was_grounded:
@@ -63,6 +62,11 @@ func _process(delta):
 		$AnimationPlayer.play("Fall")
 	if can_move == true:
 		vel.x = dir.x * speed
+	if jab_connected == true:
+		if $Player_sprite.flip_h == true:
+			vel.x = 25.0
+		else:
+			vel.x = -25.0
 	input_stuff()
 	move_and_slide(vel * 10, Vector2(0, -1))
 
@@ -124,6 +128,7 @@ func jump(state):
 				vel.y = 0
 func attack():
 	if can_interupt == true:
+		
 		$AnimationPlayer.stop(true)
 	#	$AnimationPlayer.play("Punch")
 		print(jab_num)
@@ -201,9 +206,11 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$AnimationPlayer.play("Jump")
 	if anim_name == ('Punch'):
 		can_interupt = true
+		jab_connected = false
 	if anim_name == ('Punch2'):
 		jab_num = 1
 		can_interupt = true
+		jab_connected = false
 	pass # Replace with function body.
 
 
@@ -244,6 +251,7 @@ func _on_Attack_area_entered(area):
 	if area.is_in_group('Enemy'):
 		print('collision')
 		area.damage(1)
+		jab_connected = true
 	print(area)
 	
 	pass

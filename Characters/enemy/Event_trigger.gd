@@ -5,6 +5,7 @@ export var Event = 'Null'
 export var Turn = false
 export var Jump = false
 export var Damage = false
+export var Can_damage = true
 var health = 2
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,21 +18,15 @@ func _ready():
 
 
 func _on_Area2D_body_entered(Area2D):
-#	if body.is_in_group(group):
-	
-#		if Damage == true:
-#			body.damage(1)
-#		if Damage == false:
-#			body.damage(-1)
-#	print(body)
-
-	if Area2D.is_in_group(group):
+	if Area2D.is_in_group(group) and Can_damage == true:
 		Area2D.damage(1)
 	print('enemy')
-	pass # Replace with function body.
+	pass # Replace with function body..
 
 func damage(damage):
-	
+	$Damage.play()
+	$DamageTimer.start()
+	Can_damage = false 
 	print(damage)
 	health -= 1
 	if health == 0: 
@@ -42,3 +37,8 @@ func damage(damage):
 
 
 
+
+
+func _on_DamageTimer_timeout():
+	Can_damage = true
+	pass # Replace with function body.
