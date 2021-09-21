@@ -153,7 +153,7 @@
 2/shapes = [  ]
 2/z_index = 0
 
-[sub_resource type="TileSet" id=6]
+[sub_resource type="TileSet" id=5]
 0/name = "Tree_2-3.png 0"
 0/texture = ExtResource( 8 )
 0/tex_offset = Vector2( 0, 0 )
@@ -211,7 +211,7 @@
 3/shapes = [  ]
 3/z_index = 0
 
-[sub_resource type="TileSet" id=7]
+[sub_resource type="TileSet" id=6]
 0/name = "Corner_Leaves_Right.png 0"
 0/texture = ExtResource( 15 )
 0/tex_offset = Vector2( 0, 0 )
@@ -241,7 +241,7 @@
 1/shapes = [  ]
 1/z_index = 0
 
-[sub_resource type="TileSet" id=8]
+[sub_resource type="TileSet" id=7]
 0/name = "bush.png 0"
 0/texture = ExtResource( 18 )
 0/tex_offset = Vector2( 0, 0 )
@@ -299,7 +299,7 @@
 3/shapes = [  ]
 3/z_index = 0
 
-[sub_resource type="TileSet" id=9]
+[sub_resource type="TileSet" id=8]
 0/name = "Corner_Leaves_Right.png 0"
 0/texture = ExtResource( 15 )
 0/tex_offset = Vector2( 0, 0 )
@@ -337,8 +337,8 @@ follow_viewport_scale = 0.8
 
 [node name="Back Foliage" type="TileMap" parent="CanvasLayer2"]
 modulate = Color( 0, 0, 0, 1 )
-scale = Vector2( 2, 2 )
 tile_set = SubResource( 1 )
+cell_size = Vector2( 256, 256 )
 format = 1
 
 [node name="Stop being black" type="TileMap" parent="."]
@@ -349,36 +349,37 @@ format = 1
 tile_data = PoolIntArray( -5570744, 0, 0, -5570712, 0, 0, -3669846, 1610612736, 0, -3669814, 1610612736, 0, -3473592, 0, 0, -3473560, 0, 0, -2293976, -536870912, 0, -1572656, 1610612736, 0, -1376440, 0, 0, -1376408, 0, 0, -1113904, 1610612736, 0, -196852, -536870912, 0, -196820, -536870912, 0, 983270, -2147483648, 0, 983301, -2147483648, 0, 1900300, -536870912, 0, 1900332, -536870912, 0, 2621701, -2147483648, 0, 3080422, -2147483648, 0, 3997452, -536870912, 0, 3997484, -536870912, 0, 3932390, -2147483648, 0, 4325638, -2147483648, 0, 6029055, -536870912, 0, 6094621, -536870912, 0, 6094652, -536870912, 0, 6029556, -2147483648, 0, 6357267, -2147483648, 0, 7143248, -536870912, 0, 8060692, -536870912, 0, 8060722, -536870912, 0, 8126680, -2147483648, 0, 8126712, -2147483648, 0, 8454423, -2147483648, 0, 8847199, -536870912, 0, 9174844, -536870912, 0, 9240412, -536870912, 0, 9175244, -2147483648, 0, 9699105, -536870912, 0, 10092778, -2147483648, 0, 10092809, -2147483648, 0, 11140957, -536870912, 0, 11206463, -536870912, 0, 11141327, -536870912, 0, 12124398, -536870912, 0, 12779727, -536870912, 0, 13041503, -536870912, 0, 13172544, -536870912, 0 )
 
 [node name="Vine\'s" type="TileMap" parent="."]
-scale = Vector2( 0.5, 0.5 )
 tile_set = SubResource( 3 )
+cell_size = Vector2( 256, 256 )
 format = 1
 
 [node name="Tree\'s" type="TileMap" parent="."]
-scale = Vector2( 0.6, 0.6 )
+scale = Vector2( 0.5, 0.5 )
 tile_set = SubResource( 4 )
+cell_size = Vector2( 256, 256 )
 format = 1
-tile_data = PoolIntArray( -1376278, 2, 0, -1376248, 0, 0 )
+tile_data = PoolIntArray( -196615, 0, 0 )
 
 [node name="Floor" type="TileMap" parent="."]
 tile_set = ExtResource( 17 )
-cell_size = Vector2( 256, 256 )
 format = 1
-tile_data = PoolIntArray( 131071, 536870926, 0, 65536, 536870926, 0, 65537, 536870926, 0, 65538, 536870926, 0, 983025, 3, 0 )
+tile_data = PoolIntArray( 589817, 4, 0, 589819, 3, 0, 589823, 536870916, 0, 655353, 1073741828, 0, 655354, 1610612739, 0, 655358, 1610612739, 0, 655359, 1610612740, 0, 786410, 4, 0, 786411, 3, 0, 786415, 3, 0, 786416, -1610612732, 0, 851946, -1073741820, 0, 851949, 1610612739, 0, 851952, 1610612740, 0, 1048533, -1610612733, 0, 1114104, -1610612732, 0, 1114105, 3, 0, 1114108, 3, 0, 1048576, 3, 0, 1048577, -1610612732, 0, 1048607, -1073741821, 0, 1179605, -1610612733, 0, 1179640, -1073741820, 0, 1179641, 1610612739, 0, 1179645, 1610612739, 0, 1114113, 1610612740, 0, 1310751, -1073741821, 0, 1441749, 1073741830, 0, 1441753, 536870926, 0, 1441755, 536870916, 0, 1441764, 4, 0, 1441767, 3, 0, 1441771, 3, 0, 1441775, 3, 0, 1441776, -1610612732, 0, 1376265, -2147483644, 0, 1376267, 536870915, 0, 1376271, 536870915, 0, 1376274, 536870915, 0, 1376276, 536870916, 0, 1507289, 1073741827, 0, 1507291, -536870908, 0, 1507300, -1073741820, 0, 1507301, 1610612739, 0, 1507304, 1610612739, 0, 1507308, 1610612739, 0, 1507312, 1610612740, 0, 1441801, 1073741828, 0, 1441805, 1073741827, 0, 1441809, 1073741827, 0, 1441810, 1073741827, 0, 1441812, -536870908, 0, 1441823, -1073741821, 0, 1966041, 4, 0, 1966043, 3, 0, 1966047, 3, 0, 1966051, 536870915, 0, 1966055, 536870915, 0, 1966059, 536870915, 0, 1966063, 536870915, 0, 1966067, 536870915, 0, 1966071, 536870915, 0, 1966075, 3, 0, 1966079, 3, 0, 1900547, 3, 0, 1900551, 3, 0, 1900555, 3, 0, 1900559, 3, 0, 1900563, 3, 0, 1900567, 3, 0, 1900571, 3, 0, 1900572, 536870916, 0, 2031577, 1073741828, 0, 2031581, 1073741827, 0, 2031585, 1073741827, 0, 2031589, 1073741827, 0, 2031593, 1073741827, 0, 2031597, 1073741827, 0, 2031601, 1073741827, 0, 2031605, 1073741827, 0, 2031609, 1073741827, 0, 2031613, 1073741827, 0, 1966081, 1073741827, 0, 1966085, 1073741827, 0, 1966089, 1073741827, 0, 1966093, 1073741827, 0, 1966097, 1073741827, 0, 1966101, 1073741827, 0, 1966105, 1073741827, 0, 1966108, 1610612740, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -136.328, 223.246 )
+position = Vector2( -178.532, 460.45 )
 
 [node name="Tree tops" type="TileMap" parent="."]
-scale = Vector2( 0.75, 0.75 )
-tile_set = SubResource( 6 )
+scale = Vector2( 0.5, 0.5 )
+tile_set = SubResource( 5 )
+cell_size = Vector2( 256, 256 )
 format = 1
-tile_data = PoolIntArray( -1769469, 1, 0, -1638419, 0, 0 )
+tile_data = PoolIntArray( -262151, 1, 0 )
 
 [node name="Corner Leaves" type="TileMap" parent="."]
-scale = Vector2( 1.25, 1.25 )
-tile_set = SubResource( 7 )
+tile_set = SubResource( 6 )
+cell_size = Vector2( 256, 256 )
 format = 1
-tile_data = PoolIntArray( -786456, 1, 0, -720894, 0, 0, 65500, 1, 0, 196622, 536870913, 0 )
+tile_data = PoolIntArray( -65544, 536870912, 0, -65538, 536870913, 0, 65526, 1, 0, 0, 536870913, 0 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enable = true
@@ -387,15 +388,19 @@ follow_viewport_scale = 1.5
 [node name="Front Foliage" type="TileMap" parent="CanvasLayer"]
 modulate = Color( 0, 0, 0, 1 )
 self_modulate = Color( 0, 0, 0, 1 )
-tile_set = SubResource( 8 )
+tile_set = SubResource( 7 )
+cell_size = Vector2( 256, 256 )
 format = 1
 
 [node name="Corner leaves 2" type="TileMap" parent="."]
-tile_set = SubResource( 9 )
+tile_set = SubResource( 8 )
+cell_size = Vector2( 256, 256 )
 format = 1
-tile_data = PoolIntArray( -589864, 1, 0, -393196, 0, 0 )
 
 [node name="Spawn_Bed" type="Sprite" parent="."]
-position = Vector2( 122.811, 193.168 )
-scale = Vector2( 0.218693, 0.214124 )
+position = Vector2( -4.18111, 465.407 )
+scale = Vector2( 0.159786, 0.160642 )
 texture = ExtResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 1
