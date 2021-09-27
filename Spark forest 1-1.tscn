@@ -391,6 +391,7 @@ self_modulate = Color( 0, 0, 0, 1 )
 tile_set = SubResource( 7 )
 cell_size = Vector2( 256, 256 )
 format = 1
+tile_data = PoolIntArray( 65535, 3, 0, 2, 3, 0, 196603, 2, 0, 196604, 2, 0, 196606, 2, 0, 196607, 2, 0, 131072, 2, 0, 262138, 2, 0, 262139, 2, 0, 262141, 3, 0, 327678, 2, 0, 327679, 2, 0 )
 
 [node name="Corner leaves 2" type="TileMap" parent="."]
 tile_set = SubResource( 8 )
