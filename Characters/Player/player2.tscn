@@ -118,6 +118,30 @@ tracks/5/keys = {
 "update": 0,
 "values": [ 0.579, 0.0, 0.579 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Camera2D:zoom")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = false
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 1.2, 1.2 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Camera2D:offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 20, 15 ), Vector2( -20, -10 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 18 )
@@ -265,7 +289,7 @@ tracks/0/keys = {
 polygon = PoolVector2Array( -10.4957, -4.00331, -5.36686, -4.08608, -5.57764, 4.02564, -11.1983, 4.60504 )
 
 [sub_resource type="RectangleShape2D" id=17]
-extents = Vector2( 118.701, 81.8657 )
+extents = Vector2( 71.7515, 42.1721 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -380,7 +404,7 @@ z_index = 8
 texture = ExtResource( 2 )
 hframes = 5
 vframes = 6
-frame = 10
+frame = 26
 
 [node name="World_collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -30.8677 )
