@@ -4,7 +4,7 @@ export var group = 'Null'
 export var Event = 'Null'
 export var Turn = false
 export var Jump = false
-export var Damage = false
+export var Damage = 1
 export var Can_damage = true
 var health = 2
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +19,7 @@ func _ready():
 
 func _on_Area2D_body_entered(Area2D):
 	if Area2D.is_in_group(group) and Can_damage == true:
-		Area2D.damage(1)
+		Area2D.damage(Damage)
 	print('enemy')
 	pass # Replace with function body..
 
