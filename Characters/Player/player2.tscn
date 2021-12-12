@@ -149,7 +149,7 @@ shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 30.0628, 38.6865 )
+extents = Vector2( 21.1691, 38.6865 )
 
 [sub_resource type="Animation" id=9]
 length = 0.5
@@ -398,7 +398,7 @@ script = ExtResource( 12 )
 
 [node name="Player_sprite" type="Sprite" parent="."]
 material = SubResource( 7 )
-position = Vector2( -6.66367, -29.0271 )
+position = Vector2( -1.66367, -47.0271 )
 scale = Vector2( 0.33434, 0.33434 )
 z_index = 8
 texture = ExtResource( 2 )
@@ -407,7 +407,7 @@ vframes = 6
 frame = 26
 
 [node name="World_collision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -30.8677 )
+position = Vector2( 4.10633, -30.8677 )
 shape = SubResource( 8 )
 
 [node name="Dash" type="Timer" parent="."]
@@ -480,9 +480,9 @@ shadow_enabled = true
 shadow_gradient_length = 3.0
 
 [node name="Attack" type="Area2D" parent="."]
-monitoring = false
 collision_layer = 2
 collision_mask = 2
+monitoring = false
 
 [node name="Attack_collision" type="CollisionShape2D" parent="Attack"]
 position = Vector2( 0, -30.8677 )
