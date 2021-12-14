@@ -1,0 +1,330 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Characters/Player/player2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Test_level.tscn" type="PackedScene" id=2]
+[ext_resource path="res://floor test.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tiles.tres" type="TileSet" id=4]
+[ext_resource path="res://tileset test2.tres" type="TileSet" id=5]
+[ext_resource path="res://Particles/dust_01.png" type="Texture" id=6]
+[ext_resource path="res://Music/Spark Forest (Orchestral).mp3" type="AudioStream" id=7]
+[ext_resource path="res://Levels/DirectionalBlur.shader" type="Shader" id=8]
+[ext_resource path="res://Characters/enemy/Event_trigger.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/Tileset/trees/Tree_1-1.png" type="Texture" id=10]
+[ext_resource path="res://Levels/Tileset/trees/Tree_1-2.png" type="Texture" id=11]
+[ext_resource path="res://Characters/light.png" type="Texture" id=12]
+[ext_resource path="res://Levels/Tileset/Tile_1.png" type="Texture" id=13]
+[ext_resource path="res://normal map test 2.png" type="Texture" id=14]
+[ext_resource path="res://Spawn_Bed-1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://waterfal.tscn" type="PackedScene" id=16]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 8 )
+shader_param/angle_degrees = null
+shader_param/Samples = 8
+shader_param/strength = 0.1481
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 2
+emission_box_extents = Vector3( 1000, 1000, 100 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 7.51
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 204.9
+angle_random = 1.0
+scale = 1.8
+scale_random = 0.88
+color = Color( 1, 0.996078, 0.537255, 0.67451 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 4
+auto_exposure_scale = 0.25
+auto_exposure_min_luma = 0.14
+auto_exposure_speed = 20.76
+dof_blur_far_distance = 0.35
+dof_blur_far_transition = 0.05
+dof_blur_near_distance = 15.73
+dof_blur_near_transition = 1.16
+dof_blur_near_amount = 0.11
+glow_enabled = true
+glow_bloom = 0.42
+glow_hdr_threshold = 0.38
+adjustment_enabled = true
+
+[sub_resource type="Animation" id=4]
+resource_name = "Moss baby"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/moss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -154.986, 218.526 ), Vector2( -914.889, 224.472 ), Vector2( -154.986, 218.526 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 1, 0 )
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource( 1 )]
+position = Vector2( 345.196, 163.99 )
+z_as_relative = false
+
+[node name="6618-normal" type="Sprite" parent="."]
+position = Vector2( -3640.4, 238.368 )
+z_index = -4
+texture = ExtResource( 13 )
+normal_map = ExtResource( 14 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -3873.75, -1248.91 )
+scale = Vector2( 12.6804, 10.7632 )
+texture = ExtResource( 12 )
+texture_scale = 0.89
+energy = 1.23
+range_height = -5.5
+range_z_min = -313
+range_z_max = 1058
+range_layer_min = -5
+range_layer_max = 5
+shadow_enabled = true
+shadow_gradient_length = 269.9
+
+[node name="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1654.31, 179.284 )
+
+[node name="World" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 256, 256 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( -131078, 4, 0, -131077, 3, 0, -131076, 3, 0, -131075, 3, 0, -131074, 3, 0, -131073, 3, 0, -196608, 3, 0, -196607, 3, 0, -196606, 3, 0, -196605, 3, 0, -196604, 3, 0, -196603, 3, 0, -20, 3, 0, -19, 3, 0, -18, 3, 0, -17, 3, 0, -16, 3, 0, -15, 3, 0, -14, 3, 0, -13, 3, 0, -12, 3, 0, -11, 536870916, 0, -9, 4, 0, -8, 12, 0, -7, 11, 0, 65515, 6, 0, 65516, 6, 0, 65517, 6, 0, 65518, 6, 0, 65519, 6, 0, 65520, 6, 0, 65521, 6, 0, 65522, 6, 0, 65523, 6, 0, 65524, 6, 0, 65525, 536870917, 0, 65527, 5, 0, 65528, 6, 0, 65529, 13, 0, 65530, 12, 0, 65531, 11, 0, 131052, 6, 0, 131053, 6, 0, 131054, 6, 0, 131055, 6, 0, 131056, 6, 0, 131057, 6, 0, 131058, 6, 0, 131059, 6, 0, 131060, 6, 0, 131061, 536870917, 0, 131063, 5, 0, 131064, 6, 0, 131065, 6, 0, 131066, 6, 0, 131067, 13, 0, 131068, 3, 0, 131069, 3, 0, 131070, 3, 0, 131071, 3, 0, 65536, 3, 0, 65537, 3, 0, 65538, 3, 0, 65539, 3, 0, 65540, 536870916, 0, 196588, 6, 0, 196589, 6, 0, 196590, 6, 0, 196591, 6, 0, 196592, 6, 0, 196593, 6, 0, 196594, 6, 0, 196595, 6, 0, 196596, 6, 0, 196597, 536870917, 0, 196599, 5, 0, 196600, 6, 0, 196601, 6, 0, 196602, 6, 0, 196603, 6, 0, 196604, 6, 0, 196605, 6, 0, 196606, 6, 0, 196607, 6, 0, 131072, 6, 0, 131073, 6, 0, 131074, 6, 0, 131075, 6, 0, 131076, 6, 0, 131077, 536870916, 0, 131080, 4, 0, 131081, 3, 0, 131082, 3, 0, 131083, 3, 0, 131084, 3, 0, 131085, 3, 0, 131086, 3, 0, 131087, 3, 0, 262124, 6, 0, 262125, 6, 0, 262126, 6, 0, 262127, 6, 0, 262128, 6, 0, 262129, 6, 0, 262130, 6, 0, 262131, 6, 0, 262132, 6, 0, 262133, 536870917, 0, 262135, 5, 0, 262136, 6, 0, 262137, 6, 0, 262138, 6, 0, 262139, 6, 0, 262140, 13, 0, 262141, 6, 0, 262142, 6, 0, 262143, 6, 0, 196608, 6, 0, 196609, 6, 0, 196610, 6, 0, 196611, 6, 0, 196612, 6, 0, 196613, 536870917, 0, 196616, 5, 0, 196617, 6, 0, 196618, 6, 0, 196619, 6, 0, 196620, 6, 0, 196621, 6, 0, 196622, 6, 0, 196623, 6, 0, 327660, 6, 0, 327661, 6, 0, 327662, 6, 0, 327663, 6, 0, 327664, 6, 0, 327665, 6, 0, 327666, 6, 0, 327667, 6, 0, 327668, 6, 0, 327669, 536870917, 0, 327671, 5, 0, 327672, 6, 0, 327673, 6, 0, 327674, 6, 0, 327675, 6, 0, 327676, 6, 0, 327677, 6, 0, 327678, 6, 0, 327679, 6, 0, 262144, 6, 0, 262145, 6, 0, 262146, 6, 0, 262147, 6, 0, 262148, 6, 0, 262149, 536870917, 0, 262152, 5, 0, 262153, 6, 0, 262154, 6, 0, 262155, 6, 0, 262156, 6, 0, 262157, 6, 0, 262158, 6, 0, 262159, 6, 0, 393207, 5, 0, 393208, 6, 0, 393209, 6, 0, 393210, 6, 0, 393211, 6, 0, 393212, 6, 0, 393213, 6, 0, 393214, 6, 0, 393215, 6, 0, 327680, 6, 0, 327681, 6, 0, 327682, 6, 0, 327683, 6, 0, 327684, 6, 0, 327685, 536870917, 0, 327688, 5, 0, 327689, 6, 0, 327690, 6, 0, 327691, 6, 0, 327692, 6, 0, 327693, 6, 0, 327694, 6, 0, 327695, 6, 0, 458743, 5, 0, 458746, 6, 0 )
+
+[node name="Foilage" type="Node2D" parent="."]
+visible = false
+
+[node name="BG4" type="CanvasLayer" parent="Foilage"]
+layer = -2
+follow_viewport_enable = true
+follow_viewport_scale = 0.119
+
+[node name="Node2D" parent="Foilage/BG4" instance=ExtResource( 16 )]
+position = Vector2( -1545.85, -1305.05 )
+scale = Vector2( 10.8245, 10.8245 )
+
+[node name="BG5" type="CanvasLayer" parent="Foilage"]
+layer = -2
+follow_viewport_enable = true
+follow_viewport_scale = 0.119
+
+[node name="BG" type="CanvasLayer" parent="Foilage"]
+layer = -2
+follow_viewport_enable = true
+follow_viewport_scale = 0.723
+
+[node name="TileMap2" type="TileMap" parent="Foilage/BG"]
+modulate = Color( 0, 0, 0, 1 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 256, 256 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( -458750, 9, 0, -327682, 9, 0, -327678, 9, 0, -196610, 9, 0, -196606, 9, 0, -65538, 9, 0, -6, 7, 0, -65534, 9, 0, 65534, 9, 0, 2, 10, 0, 65538, 9, 0, 262149, 6, 0 )
+
+[node name="BG3" type="CanvasLayer" parent="Foilage"]
+layer = -1
+follow_viewport_enable = true
+follow_viewport_scale = 0.867
+
+[node name="Tree_1-1" type="Sprite" parent="Foilage/BG3"]
+position = Vector2( -402.348, -130.339 )
+scale = Vector2( 0.260422, 0.260422 )
+texture = ExtResource( 10 )
+
+[node name="Tree_1-2" type="Sprite" parent="Foilage/BG3/Tree_1-1"]
+position = Vector2( -163.109, 834.741 )
+scale = Vector2( 0.613085, 0.613085 )
+z_index = -1
+texture = ExtResource( 11 )
+
+[node name="TileMap2" type="TileMap" parent="Foilage/BG3"]
+modulate = Color( 0, 0, 0, 1 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 256, 256 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( -131077, 536870919, 0, -131076, 536870919, 0, -131074, 536870919, 0, -65539, 536870919, 0, -65537, 536870919, 0, -131072, 536870919, 0, 65532, 7, 0, 65533, 536870922, 0, 0, 7, 0, 4, 7, 0, 131070, -2147483639, 0, 262149, 6, 0 )
+
+[node name="BG2" type="CanvasLayer" parent="Foilage"]
+layer = -1
+offset = Vector2( 0, 11.172 )
+transform = Transform2D( 1, 0, 0, 1, 0, 11.172 )
+follow_viewport_enable = true
+follow_viewport_scale = 0.973
+
+[node name="TileMap2" type="TileMap" parent="Foilage/BG2"]
+position = Vector2( -46.0347, 7.93698 )
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 458733, 1, 0, 458743, 1, 0, 524261, 0, 0, 524262, 0, 0, 524263, 0, 0, 524264, 0, 0, 524265, 0, 0, 524266, 0, 0, 524267, 0, 0, 524271, 0, 0, 524272, 0, 0, 524273, 0, 0, 524274, 0, 0, 524275, 0, 0, 524276, 0, 0, 524277, 0, 0, 524278, 0, 0, 524279, 0, 0, 524280, 0, 0, 524281, 0, 0, 524282, 0, 0 )
+
+[node name="Grass" type="CanvasLayer" parent="Foilage"]
+layer = 2
+follow_viewport_enable = true
+follow_viewport_scale = 1.056
+
+[node name="TileMap2" type="TileMap" parent="Foilage/Grass"]
+modulate = Color( 0.729412, 0.729412, 0.729412, 1 )
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 458726, 536870913, 0, 458733, 536870913, 0, 524259, 0, 0, 524266, 0, 0, 524275, 536870913, 0, 524279, 536870912, 0, 524282, 536870912, 0, 524284, 536870912, 0, 589799, 1, 0, 589804, 1, 0, 589820, 1, 0, 524290, 1, 0, 655338, 536870913, 0 )
+
+[node name="FG2" type="CanvasLayer" parent="Foilage"]
+layer = 2
+follow_viewport_enable = true
+follow_viewport_scale = 1.182
+
+[node name="TileMap2" type="TileMap" parent="Foilage/FG2"]
+modulate = Color( 0.0705882, 0.184314, 0.117647, 1 )
+position = Vector2( -122.715, 88.7011 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 256, 256 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( 131069, 10, 0, 131070, 7, 0, 65536, 10, 0, 65537, 10, 0, 65538, 7, 0 )
+
+[node name="FG3" type="CanvasLayer" parent="Foilage"]
+layer = 3
+offset = Vector2( 0, 256 )
+transform = Transform2D( 1, 0, 0, 1, 0, 256 )
+follow_viewport_enable = true
+follow_viewport_scale = 1.321
+
+[node name="TileMap2" type="TileMap" parent="Foilage/FG3"]
+modulate = Color( 0.0235294, 0.0313726, 0.0196078, 1 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 256, 256 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( -196614, 7, 0, -196613, 7, 0, -196612, 7, 0, -196611, 7, 0, -196610, 7, 0, -196609, 7, 0, -262144, 7, 0, -262143, 7, 0, -262142, 7, 0, -262141, 7, 0, -262140, 7, 0, -131076, 7, 0, -131075, 7, 0, -131074, 7, 0, -131073, 7, 0, -196608, 7, 0, -196607, 7, 0, -196606, 7, 0, -196605, 7, 0, -196604, 7, 0, -196603, 7, 0, 65532, 10, 0, 65533, 10, 0, 65534, 10, 0, 65535, 7, 0, 0, 7, 0, 1, 10, 0, 2, 10, 0, 131068, 10, 0, 131069, 10, 0, 131070, 10, 0, 131071, 10, 0, 65537, 10, 0, 65538, 10, 0, 196607, 10, 0, 131072, 10, 0, 131073, 10, 0, 131074, 10, 0, 131076, 10, 0 )
+
+[node name="FG5" type="CanvasLayer" parent="Foilage"]
+layer = 4
+follow_viewport_enable = true
+follow_viewport_scale = 1.426
+
+[node name="TileMap2" type="TileMap" parent="Foilage/FG5"]
+modulate = Color( 0.0117647, 0.027451, 0.0156863, 1 )
+position = Vector2( 3.148, 384 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 512, 512 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( -65538, 7, 0, -65537, 7, 0, -131072, 7, 0, -131071, 7, 0, -131070, 7, 0, 65534, 7, 0, 65535, 7, 0, 0, 7, 0, 1, 10, 0, 2, 10, 0, 131070, 7, 0, 131071, 7, 0, 65536, 7, 0, 65537, 7, 0, 65538, 7, 0, 196606, 7, 0, 196607, 7, 0, 131072, 7, 0, 131073, 7, 0 )
+
+[node name="FG4" type="CanvasLayer" parent="Foilage"]
+layer = 5
+follow_viewport_enable = true
+follow_viewport_scale = 1.68
+
+[node name="TileMap2" type="TileMap" parent="Foilage/FG4"]
+modulate = Color( 0.0313726, 0.054902, 0.0235294, 1 )
+material = SubResource( 1 )
+position = Vector2( 252, -172 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 511, 385 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( 131070, 10, 0, 131071, 10, 0, 65537, 10, 0, 196606, 10, 0, 196607, 10, 0, 131072, 10, 0, 131073, 10, 0 )
+
+[node name="FG6" type="CanvasLayer" parent="Foilage"]
+layer = 6
+follow_viewport_enable = true
+follow_viewport_scale = 1.943
+
+[node name="Bokeh" type="Particles2D" parent="Foilage/FG6"]
+modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
+amount = 44
+lifetime = 193.5
+explosiveness = 1.0
+visibility_rect = Rect2( -1600, -200, 4400, 4400 )
+process_material = SubResource( 2 )
+texture = ExtResource( 6 )
+
+[node name="FG7" type="CanvasLayer" parent="Foilage"]
+layer = 9
+follow_viewport_enable = true
+follow_viewport_scale = 2.816
+
+[node name="Particles2D" type="Particles2D" parent="Foilage/FG7"]
+modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
+amount = 32
+lifetime = 193.5
+speed_scale = 0.0
+explosiveness = 1.0
+process_material = SubResource( 2 )
+texture = ExtResource( 6 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 3 )]
+position = Vector2( -362.168, 309.61 )
+scale = Vector2( 1, 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="Spawn_Bed-1" parent="." instance=ExtResource( 15 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Moss baby"
+playback_speed = 0.3
+method_call_mode = 1
+"anims/Moss baby" = SubResource( 4 )
+
+[node name="moss" parent="AnimationPlayer" groups=["Enemy"] instance=ExtResource( 9 )]
+position = Vector2( -534.938, 221.499 )
+scale = Vector2( 6.3743, 4.90707 )
+collision_layer = 3
+collision_mask = 3
+group = "Player"
+Event = "test()"
+
+[node name="Area2D2" parent="." groups=["Enemy"] instance=ExtResource( 9 )]
+position = Vector2( -129.359, 207.727 )
+scale = Vector2( 6.3743, 4.90707 )
+collision_layer = 3
+collision_mask = 3
+group = "Player"
+Event = "test()"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Area2D2"]
+margin_left = -10.2409
+margin_top = -13.8879
+margin_right = 53.7591
+margin_bottom = 18.1121
+rect_scale = Vector2( 0.238591, 0.238591 )
+text = "Heal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = 16.929
+autoplay = true
