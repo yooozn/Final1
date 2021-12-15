@@ -16,7 +16,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
+#
 func _on_Area2D_body_entered(Area2D):
 	if Area2D.is_in_group(group) and Can_damage == true:
 		Area2D.damage(Damage)

@@ -57,6 +57,7 @@ material = SubResource( 3 )
 position = Vector2( -8.77848, -15.1529 )
 scale = Vector2( 0.0837345, 0.101094 )
 frames = SubResource( 4 )
+frame = 2
 playing = true
 
 [node name="Enemy_effects" type="AnimationPlayer" parent="."]

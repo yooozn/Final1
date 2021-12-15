@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=11 format=2]
+[gd_resource type="TileSet" load_steps=12 format=2]
 
 [ext_resource path="res://Room_1 blueprint.png" type="Texture" id=1]
 
@@ -29,12 +29,15 @@ points = PoolVector2Array( 657.008, 1164.62, 1607.41, 1173.26, 1605.68, 1304.59,
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 0, 1973.33, 2044.59, 1978.51, 2048, 2048, 0, 2048 )
 
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 0, 0, 659, 0, 659, 72, 0, 72 )
+
 [resource]
 0/name = "Room_1 blueprint.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 2048, 2048 )
+0/region = Rect2( 731, 445, 659, 72 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
@@ -96,6 +99,12 @@ points = PoolVector2Array( 0, 1973.33, 2044.59, 1978.51, 2048, 2048, 0, 2048 )
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0

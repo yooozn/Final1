@@ -253,8 +253,6 @@ func _on_Attack_area_entered(area):
 		area.damage(1)
 		jab_connected = true
 	print(area)
-	
-	pass
 
 func set_limit(left, right, top, bottom):
 	$Camera2D.limit_top = top
@@ -263,3 +261,4 @@ func set_limit(left, right, top, bottom):
 	$Camera2D.limit_right = right
 	
 	pass
+
