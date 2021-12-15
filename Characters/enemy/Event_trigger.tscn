@@ -1,22 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Characters/enemy/Event_trigger.gd" type="Script" id=1]
 [ext_resource path="res://Moss_Baby_Walk-5.png" type="Texture" id=2]
 [ext_resource path="res://Moss_Baby_Walk-3.png" type="Texture" id=3]
 [ext_resource path="res://Moss_Baby_Walk-4.png" type="Texture" id=4]
 [ext_resource path="res://Moss_Baby_Walk-2.png" type="Texture" id=5]
-[ext_resource path="res://player2.gdshader" type="Shader" id=6]
+[ext_resource path="res://testingthings/EnemyHit.tres" type="Material" id=6]
 [ext_resource path="res://Characters/Player/Effects.gd" type="Script" id=7]
 [ext_resource path="res://hit_placerholder.mp3" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10.6451, 9.80361 )
-
-[sub_resource type="ShaderMaterial" id=3]
-resource_local_to_scene = true
-shader = ExtResource( 6 )
-shader_param/flash_color = Color( 1, 1, 1, 1 )
-shader_param/flash_modifier = 0.0
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -53,11 +47,11 @@ position = Vector2( -0.527283, -0.75 )
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-material = SubResource( 3 )
+material = ExtResource( 6 )
 position = Vector2( -8.77848, -15.1529 )
 scale = Vector2( 0.0837345, 0.101094 )
 frames = SubResource( 4 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Enemy_effects" type="AnimationPlayer" parent="."]

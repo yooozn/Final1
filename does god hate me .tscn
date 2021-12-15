@@ -298,7 +298,7 @@ method_call_mode = 1
 "anims/Moss baby" = SubResource( 4 )
 
 [node name="moss" parent="AnimationPlayer" groups=["Enemy"] instance=ExtResource( 9 )]
-position = Vector2( -686.918, 222.688 )
+position = Vector2( -154.986, 218.526 )
 scale = Vector2( 6.3743, 4.90707 )
 collision_layer = 3
 collision_mask = 3

@@ -1,6 +1,6 @@
 extends Area2D
-
 onready var TweenNode = $Tween
+onready var shader = $Sprite.material
 
 # boolean testing if player is in damage range, and if player hasnt been damaged in last .3 seconds
 var can_damage = false
@@ -11,11 +11,12 @@ var target = Vector2()
 var dashAble = true
 var dashNum = 0
 var justDamaged = false
+var startingPos
 #Boolean testing if player is still in range after leaving the .3 seconds. Prevents player from being hit after leaving boss range
 var stillInRange = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	startingPos = position
 
 
 func _process(delta):
@@ -43,9 +44,19 @@ func _process(delta):
 			_Dash()
 			yield(get_tree().create_timer(1),"timeout")
 			if dashNum < 4:
+				TweenNode.interpolate_property(self,"position", position, (position + Vector2(0,-150)), .3, Tween.TRANS_LINEAR, Tween.EASE_IN)
+				TweenNode.start()
+				yield(get_tree().create_timer(.6),"timeout")
 				dashAble = true
 			else:
+				var shaderCol = shader.get_shader_param("flash_color")
+				print(shaderCol)
+				shader.set_shader_param("flash_color", Color(1,1,.67))
 				yield(get_tree().create_timer(3),"timeout")
+				shader.set_shader_param("flash_color",shaderCol)
+				TweenNode.interpolate_property(self, "position", position, (startingPos + Vector2(0,-150)), .3, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+				TweenNode.start()
+				yield(get_tree().create_timer(1),"timeout")
 				dashNum = 0
 				dashAble = true
 #		if dashNum == 4:
@@ -54,6 +65,8 @@ func _process(delta):
 #			dashAble = true
 #			print("dashNUm")
 #	print(dashNum)
+	if health <= 0:
+		queue_free()
 		
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player"):
@@ -76,8 +89,9 @@ func _Dash():
 		
 func damage(damage):
 	health -= damage
+	shader.set_shader_param("flash_modifier", 0)
+	yield(get_tree().create_timer(.1),"timeout")
+	shader.set_shader_param("flash_modifier", 1)
+	print("shader")
+	
 
-func _on_Area2D_area_entered(area):
-#	if area.is_in_group("PlayerAttack"):
-	health -= 1
-	print("hit")
