@@ -42,16 +42,29 @@ func _process(delta):
 		state = 'attacking'
 #		yield(get_tree().create_timer(2),"timeout")
 		print("attacking")
-		if (target.x - $AnimatedSprite.position.x) > 1:
-			position = (target + Vector2(-400, -400))
-			_anim_player.play("AppearUp")
-			direction = 'right'
-			print("right")
-		elif (target.x - $AnimatedSprite.position.x) < 1:
-			position = (target + Vector2(-1000, -400))
-			_anim_player.play("AppearUpFlip")
-			direction = 'left'
-			print("left")
+		var random = rng.randi_range(1,2)
+		if random == 1:
+			if (target.x - $AnimatedSprite.position.x) > 1:
+				position = (target + Vector2(-400, -400))
+				_anim_player.play("AppearUp")
+				direction = 'right'
+				print("right")
+			elif (target.x - $AnimatedSprite.position.x) < 1:
+				position = (target + Vector2(-1000, -400))
+				_anim_player.play("AppearUpFlip")
+				direction = 'left'
+				print("left")
+		elif random == 2:
+			if (target.x - $AnimatedSprite.position.x) > 1:
+				position = (target + Vector2(-400, -400))
+				_anim_player.play("AppearDown")
+				direction = 'right'
+				print("right")
+			elif (target.x - $AnimatedSprite.position.x) < 1:
+				position = (target + Vector2(-1000, -400))
+				_anim_player.play("AppearDownFlip")
+				direction = 'left'
+				print("left")
 		
 		
 
@@ -104,6 +117,33 @@ func _AppearUp():
 	print("start")
 	state = 'idle'
 
+func _AppearDown():
+	if direction == 'right':
+		TweenNode.interpolate_property(self, "position", position, (position + Vector2(-70, 150)), .3,Tween.TRANS_LINEAR,Tween.EASE_IN)
+		TweenNode.start()
+		yield(get_tree().create_timer(.5),"timeout")
+		_Transform()
+		_anim_player.play("Attack2 Right")
+		yield(get_tree().create_timer(.5),"timeout")
+		TweenNode.interpolate_property(self, "position", position, (position + Vector2(-1000,-600)), .7, Tween.TRANS_LINEAR,Tween.EASE_IN)
+		TweenNode.start()
+	elif direction == 'left':
+		TweenNode.interpolate_property(self, "position", position, (position + Vector2(70, 150)), .3,Tween.TRANS_LINEAR,Tween.EASE_IN)
+		TweenNode.start()
+		yield(get_tree().create_timer(.5),"timeout")
+		_Transform()
+		_anim_player.play("Attack2")
+		yield(get_tree().create_timer(.5),"timeout")
+		TweenNode.interpolate_property(self, "position", position, (position + Vector2(1000,-600)), .7,Tween.TRANS_LINEAR,Tween.EASE_IN)
+		TweenNode.start()
+#	if !_anim_player.current_animation == "Attack1":
+#		state = 'idle'
+#		print("appearup")
+#	elif !_anim_player.current_animation == "Attack1 Right":
+#		state = 'idle'
+	yield(get_tree().create_timer(1.5),"timeout")
+	print("start")
+	state = 'idle'
 
 func _BlinkUp():
 	if direction == 'right':

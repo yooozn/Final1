@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://Spark forest 1-1.tres" type="TileSet" id=1]
 [ext_resource path="res://Characters/New/Orbis Animations/bamm/Bamm_Before_Battle-2.png" type="Texture" id=2]
@@ -116,7 +116,7 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 30 ), ExtResource( 43 ), ExtResource( 31 ), ExtResource( 66 ), ExtResource( 73 ), ExtResource( 71 ), ExtResource( 72 ) ],
-"loop": true,
+"loop": false,
 "name": "Attack2",
 "speed": 12.0
 }, {
@@ -133,6 +133,184 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 404.5, 148 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "AppearDown"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Boss/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "IdleBlurry" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Boss/AnimatedSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Boss/Swords:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Boss/AnimatedSprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.15, 0.15 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Boss/AnimatedSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("Boss")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_AppearDown"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Boss/Body:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 730, 474 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "AppearDownFlip"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Boss/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "IdleBlurry" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Boss/AnimatedSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Boss/Swords:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Boss/AnimatedSprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.15, 0.15 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Boss/AnimatedSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("Boss")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_AppearDown"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Boss/Body:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 730, 474 ) ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "AppearUp"
@@ -606,6 +784,184 @@ tracks/11/keys = {
 "times": PoolRealArray(  ),
 "transitions": PoolRealArray(  ),
 "values": [  ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Attack2"
+length = 1.05
+step = 0.085
+tracks/0/type = "value"
+tracks/0/path = NodePath("Boss/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Attack2" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Boss/AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.085, 0.17, 0.255, 0.34, 0.425, 0.51 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Boss/AnimatedSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Boss/Body:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.085, 0.17, 0.34, 0.425 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 590, 498 ), Vector2( 622, 498 ), Vector2( 678, 498 ), Vector2( 758, 498 ), Vector2( 790, 498 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Boss/Swords:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.085, 0.17, 0.255, 0.34 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 65.5, 40 ), Vector2( 65.5, 40 ), Vector2( 65.5, 40 ), Vector2( 106.5, 40 ), Vector2( 106.5, 40 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Boss/Swords:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.085, 0.17, 0.255, 0.34 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 628.5, 482 ), Vector2( 684.5, 498 ), Vector2( 700.5, 522 ), Vector2( 695.5, 498 ), Vector2( 895.5, 498 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Boss/Swords:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.085, 0.17, 0.34 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "Attack2 Right"
+length = 1.05
+step = 0.085
+tracks/0/type = "value"
+tracks/0/path = NodePath("Boss/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Attack2" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Boss/AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.085, 0.17, 0.255, 0.34, 0.425, 0.51 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Boss/AnimatedSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Boss/Body:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.085, 0.17, 0.34, 0.425 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 926, 498 ), Vector2( 894, 498 ), Vector2( 838, 498 ), Vector2( 758, 498 ), Vector2( 662, 498 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Boss/Swords:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.085, 0.17, 0.255, 0.34 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 65.5, 40 ), Vector2( 65.5, 40 ), Vector2( 86.5, 54.5 ), Vector2( 106.5, 40 ), Vector2( 106.5, 40 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Boss/Swords:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.085, 0.17, 0.255, 0.34 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 900.5, 498 ), Vector2( 844.5, 498 ), Vector2( 841.5, 496.5 ), Vector2( 823.5, 514 ), Vector2( 631.5, 490 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Boss/Swords:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.085, 0.17, 0.255, 0.34 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -1163,12 +1519,13 @@ material = ExtResource( 8 )
 position = Vector2( 760, 464 )
 scale = Vector2( 0.23, 0.23 )
 frames = SubResource( 1 )
-animation = "Attack1"
-frame = 10
+animation = "Attack2"
 
 [node name="Detection Range" type="Area2D" parent="Boss"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/Detection Range"]
+visible = false
 position = Vector2( 788.5, 430.348 )
 shape = SubResource( 3 )
 
@@ -1182,10 +1539,14 @@ tile_data = PoolIntArray( 655355, 0, 0, 589824, 0, 0, 589834, 0, 0 )
 [node name="Player" parent="." instance=ExtResource( 9 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/AppearDown = SubResource( 14 )
+anims/AppearDownFlip = SubResource( 15 )
 anims/AppearUp = SubResource( 11 )
 anims/AppearUpFlip = SubResource( 12 )
 anims/Attack1 = SubResource( 4 )
 "anims/Attack1 Right" = SubResource( 10 )
+anims/Attack2 = SubResource( 16 )
+"anims/Attack2 Right" = SubResource( 17 )
 anims/DisappearUp = SubResource( 5 )
 anims/Idle = SubResource( 6 )
 anims/IdleFlip = SubResource( 13 )
