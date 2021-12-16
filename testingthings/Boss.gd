@@ -40,7 +40,7 @@ func _process(delta):
 			canDamage = false
 	if state == 'idle':
 		state = 'attacking'
-		yield(get_tree().create_timer(2),"timeout")
+#		yield(get_tree().create_timer(2),"timeout")
 		print("attacking")
 		if (target.x - $AnimatedSprite.position.x) > 1:
 			position = (target + Vector2(-400, -400))
@@ -57,6 +57,7 @@ func _process(delta):
 
 func _on_Detection_Range_body_entered(body):
 	if body.is_in_group("Player"):
+		$"Detection Range/CollisionShape2D".set_deferred("disabled", true)
 		player = body
 		_anim_player.play("Start")
 		yield(get_tree().create_timer(2.3),"timeout")
@@ -99,6 +100,8 @@ func _AppearUp():
 #		print("appearup")
 #	elif !_anim_player.current_animation == "Attack1 Right":
 #		state = 'idle'
+	yield(get_tree().create_timer(1),"timeout")
+	print("start")
 	state = 'idle'
 
 

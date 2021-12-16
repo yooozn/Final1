@@ -1157,16 +1157,14 @@ shape = SubResource( 2 )
 [node name="Swords" type="CollisionShape2D" parent="Boss"]
 position = Vector2( 751.5, 464.5 )
 shape = SubResource( 9 )
-disabled = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Boss"]
 material = ExtResource( 8 )
 position = Vector2( 760, 464 )
-scale = Vector2( 0.15, 0.15 )
+scale = Vector2( 0.23, 0.23 )
 frames = SubResource( 1 )
-animation = "Start"
-frame = 23
-playing = true
+animation = "Attack1"
+frame = 10
 
 [node name="Detection Range" type="Area2D" parent="Boss"]
 
