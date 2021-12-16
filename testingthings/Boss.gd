@@ -94,11 +94,12 @@ func _AppearUp():
 		yield(get_tree().create_timer(.5),"timeout")
 		_Transform()
 		_anim_player.play("Attack1")
-	if !_anim_player.current_animation == "Attack1":
-		state = 'idle'
-		print("appearup")
-	elif !_anim_player.current_animation == "Attack1 Right":
-		state = 'idle'
+#	if !_anim_player.current_animation == "Attack1":
+#		state = 'idle'
+#		print("appearup")
+#	elif !_anim_player.current_animation == "Attack1 Right":
+#		state = 'idle'
+	state = 'idle'
 
 
 func _BlinkUp():
