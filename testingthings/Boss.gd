@@ -62,6 +62,7 @@ func _on_Detection_Range_body_entered(body):
 		yield(get_tree().create_timer(2.3),"timeout")
 		_anim_player.play("DisappearUp")
 		state = 'idle'
+		print("detectionRange")
 
 func damage(damage):
 	health -= 1
@@ -84,13 +85,13 @@ func _AppearUp():
 	if direction == 'right':
 		TweenNode.interpolate_property(self, "position", position, (position + Vector2(-70, -150)), .3,Tween.TRANS_LINEAR,Tween.EASE_IN)
 		TweenNode.start()
-		yield(get_tree().create_timer(1.5),"timeout")
+		yield(get_tree().create_timer(1),"timeout")
 		_anim_player.play("Attack1 Right")
 	elif direction == 'left':
 		TweenNode.interpolate_property(self, "position", position, (position + Vector2(70, -150)), .3,Tween.TRANS_LINEAR,Tween.EASE_IN)
 		TweenNode.start()
-		yield(get_tree().create_timer(1.5),"timeout")
+		yield(get_tree().create_timer(1),"timeout")
 		_anim_player.play("Attack1")
-	yield(get_tree().create_timer(1),"timeout")
+	yield(get_tree().create_timer(.1),"timeout")
 	state = 'idle'
 	print("appearup")

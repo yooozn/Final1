@@ -210,6 +210,18 @@ tracks/5/keys = {
 "method": "_AppearUp"
 } ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Boss/Body:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 730, 474 ) ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "AppearUpFlip"
@@ -287,9 +299,22 @@ tracks/5/keys = {
 "method": "_AppearUp"
 } ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Boss/Body:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 730, 474 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Attack1"
+length = 0.8
 step = 0.08
 tracks/0/type = "value"
 tracks/0/path = NodePath("Boss/AnimatedSprite:animation")
@@ -411,9 +436,22 @@ tracks/9/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("Boss/AnimatedSprite:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "Attack1 Right"
+length = 0.8
 step = 0.08
 tracks/0/type = "value"
 tracks/0/path = NodePath("Boss/AnimatedSprite:animation")
@@ -473,7 +511,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 872, 498 ), Vector2( 864, 506 ), Vector2( 864, 506 ), Vector2( 800, 506 ), Vector2( 768, 506 ), Vector2( 728, 506 ), Vector2( 704, 490 ), Vector2( 680, 498 ), Vector2( 672, 506 ), Vector2( 624, 506 ) ]
+"values": [ Vector2( 770, 498 ), Vector2( 864, 506 ), Vector2( 864, 506 ), Vector2( 800, 506 ), Vector2( 768, 506 ), Vector2( 728, 506 ), Vector2( 704, 490 ), Vector2( 680, 498 ), Vector2( 672, 506 ), Vector2( 624, 506 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Boss/Swords:disabled")
@@ -534,6 +572,18 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Boss/AnimatedSprite:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -747,6 +797,30 @@ tracks/7/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Boss/AnimatedSprite:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Boss/AnimatedSprite:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=13]
 resource_name = "IdleFlip"
@@ -857,6 +931,18 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Boss/AnimatedSprite:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -1008,6 +1094,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("Boss/AnimatedSprite:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Boss/AnimatedSprite:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.15, 0.15 ) ]
+}
 
 [node name="Node2D" type="Node2D"]
 
@@ -1026,10 +1136,11 @@ shape = SubResource( 9 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Boss"]
 material = ExtResource( 8 )
-position = Vector2( 737, 464 )
+position = Vector2( 760, 464 )
 scale = Vector2( 0.23, 0.23 )
 frames = SubResource( 1 )
 animation = "Attack1"
+flip_h = true
 
 [node name="Detection Range" type="Area2D" parent="Boss"]
 visible = false
@@ -1037,7 +1148,6 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/Detection Range"]
 position = Vector2( 788.5, 430.348 )
 shape = SubResource( 3 )
-disabled = true
 
 [node name="Tween" type="Tween" parent="Boss"]
 
