@@ -1,0 +1,96 @@
+extends Area2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
+var rng = RandomNumberGenerator.new()
+var target = false
+var player = null
+var health = 5
+onready var _anim_player = get_parent().get_node("AnimationPlayer")
+onready var shader = $AnimatedSprite.material
+onready var TweenNode = $Tween
+var state
+var canDamage = false
+var inRange = false
+var immunity = false
+var direction = null
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	rng.randomize()
+	_anim_player.play("Idle")
+
+
+func _process(delta):
+	if player:
+		target = player.position
+	if health == 0:
+		queue_free()
+	if canDamage == true and inRange == true and immunity == false:
+		player.damage(1)
+		canDamage = false
+		immunity = true
+		yield(get_tree().create_timer(1),"timeout")
+		immunity = false
+		if inRange == true:
+			canDamage = true
+		else:
+			canDamage = false
+	if state == 'idle':
+		state = 'attacking'
+		yield(get_tree().create_timer(1),"timeout")
+		print("attacking")
+		if (target.x - $AnimatedSprite.position.x) > 1:
+			position = (target + Vector2(-400, -400))
+			_anim_player.play("AppearUp")
+			direction = 'right'
+			print("right")
+		elif (target.x - $AnimatedSprite.position.x) < 1:
+			position = (target + Vector2(-1000, -400))
+			_anim_player.play("AppearUpFlip")
+			direction = 'left'
+			print("left")
+		
+		
+
+func _on_Detection_Range_body_entered(body):
+	if body.is_in_group("Player"):
+		player = body
+		_anim_player.play("Start")
+		yield(get_tree().create_timer(2.3),"timeout")
+		_anim_player.play("DisappearUp")
+		state = 'idle'
+
+func damage(damage):
+	health -= 1
+	shader.set_shader_param("flash_modifier", 1)
+	yield(get_tree().create_timer(.07),"timeout")
+	shader.set_shader_param("flash_modifier", 0)
+
+
+func _on_Boss_body_entered(body):
+	if body.is_in_group("Player"):
+		canDamage = true
+		inRange = true
+
+
+func _on_Boss_body_exited(body):
+	if body.is_in_group("Player"):
+		inRange = false
+
+func _AppearUp():
+	if direction == 'right':
+		TweenNode.interpolate_property(self, "position", position, (position + Vector2(-70, -150)), .3,Tween.TRANS_LINEAR,Tween.EASE_IN)
+		TweenNode.start()
+		yield(get_tree().create_timer(1.5),"timeout")
+		_anim_player.play("Attack1 Right")
+	elif direction == 'left':
+		TweenNode.interpolate_property(self, "position", position, (position + Vector2(70, -150)), .3,Tween.TRANS_LINEAR,Tween.EASE_IN)
+		TweenNode.start()
+		yield(get_tree().create_timer(1.5),"timeout")
+		_anim_player.play("Attack1")
+	yield(get_tree().create_timer(1),"timeout")
+	state = 'idle'
+	print("appearup")
