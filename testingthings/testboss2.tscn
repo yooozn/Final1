@@ -443,10 +443,21 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.72, 0.88 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath("Boss")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -511,7 +522,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 770, 498 ), Vector2( 864, 506 ), Vector2( 864, 506 ), Vector2( 800, 506 ), Vector2( 768, 506 ), Vector2( 728, 506 ), Vector2( 704, 490 ), Vector2( 680, 498 ), Vector2( 672, 506 ), Vector2( 624, 506 ) ]
+"values": [ Vector2( 870, 498 ), Vector2( 864, 506 ), Vector2( 864, 506 ), Vector2( 800, 506 ), Vector2( 768, 506 ), Vector2( 728, 506 ), Vector2( 704, 490 ), Vector2( 680, 498 ), Vector2( 672, 506 ), Vector2( 624, 506 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Boss/Swords:disabled")
@@ -580,10 +591,21 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.72, 0.88 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath("Boss")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -603,7 +625,7 @@ tracks/0/keys = {
 "values": [ "IdleBlurry" ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Boss:position")
+tracks/1/path = NodePath("Boss/AnimatedSprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -612,22 +634,22 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.25 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 19, 25 ), Vector2( -102, -160 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Boss/AnimatedSprite:modulate")
+tracks/2/path = NodePath("Boss/Body:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.25 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Vector2( 744, 482 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Boss/Body:position")
+tracks/3/path = NodePath("Boss:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -636,10 +658,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 744, 482 ) ]
+"values": [ Vector2( 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Boss:scale")
+tracks/4/path = NodePath("Boss/AnimatedSprite:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -648,10 +670,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ Vector2( 0.15, 0.15 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Boss/AnimatedSprite:scale")
+tracks/5/path = NodePath("Boss/Swords:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -659,11 +681,11 @@ tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.15, 0.15 ) ]
+"update": 1,
+"values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Boss/Swords:disabled")
+tracks/6/path = NodePath("Boss/AnimatedSprite:flip_h")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -672,10 +694,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Boss/AnimatedSprite:flip_h")
+tracks/7/path = NodePath("Boss/Detection Range/CollisionShape2D:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -684,10 +706,10 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath("Boss/Detection Range/CollisionShape2D:disabled")
+tracks/8/type = "method"
+tracks/8/path = NodePath("Boss")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -695,8 +717,10 @@ tracks/8/enabled = true
 tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"values": [ {
+"args": [  ],
+"method": "_BlinkUp"
+} ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -1133,17 +1157,18 @@ shape = SubResource( 2 )
 [node name="Swords" type="CollisionShape2D" parent="Boss"]
 position = Vector2( 751.5, 464.5 )
 shape = SubResource( 9 )
+disabled = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Boss"]
 material = ExtResource( 8 )
 position = Vector2( 760, 464 )
-scale = Vector2( 0.23, 0.23 )
+scale = Vector2( 0.15, 0.15 )
 frames = SubResource( 1 )
-animation = "Attack1"
-flip_h = true
+animation = "Start"
+frame = 23
+playing = true
 
 [node name="Detection Range" type="Area2D" parent="Boss"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/Detection Range"]
 position = Vector2( 788.5, 430.348 )
