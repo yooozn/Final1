@@ -125,7 +125,7 @@ func _AppearDown():
 		_Transform()
 		_anim_player.play("Attack2 Right")
 		yield(get_tree().create_timer(.5),"timeout")
-		TweenNode.interpolate_property(self, "position", position, (position + Vector2(-1000,-600)), .7, Tween.TRANS_LINEAR,Tween.EASE_IN)
+		TweenNode.interpolate_property(self, "position", position, (position + Vector2(-1000,-600)), .1, Tween.TRANS_LINEAR,Tween.EASE_IN)
 		TweenNode.start()
 	elif direction == 'left':
 		TweenNode.interpolate_property(self, "position", position, (position + Vector2(70, 150)), .3,Tween.TRANS_LINEAR,Tween.EASE_IN)
